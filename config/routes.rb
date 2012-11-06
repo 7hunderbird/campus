@@ -1,4 +1,12 @@
 Campus::Application.routes.draw do
+  resources :users
+
+  resources :study_plans
+
+  resources :assignments
+
+  resources :courses
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

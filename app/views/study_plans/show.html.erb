@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @study_plan.name %>
+</p>
+
+<p>
+  <b>Due date:</b>
+  <%= @study_plan.due_date %>
+</p>
+
+
+<%= link_to 'Edit', edit_study_plan_path(@study_plan) %> |
+<%= link_to 'Back', study_plans_path %>
