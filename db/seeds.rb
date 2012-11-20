@@ -13,4 +13,4 @@ Assignment.create(:due_date => '12/1/2012', :title => "How to pick up chicks", :
 Course.create(:description => 'How to be awesome at Rails', :name => 'Joe Reis', :url =>'http://awesomenessandstuff.com')
 
 #Seed data for study_plan
-Study_Plan.create(:due_date => '1/1/2013', :name: 'Study Plan Test')
+StudyPlan.create(:due_date => '1/1/2013', :name => 'Study Plan Test')
