@@ -5,3 +5,9 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Emanuel', :city => cities.first)
+
+#Seed data for assignment
+Assignment.create(:due_date => '12/1/2012', :title => "How to pick up chicks", :url => 'http://www.google.com')
+
+#Seed data for course
+Course.create(:description => 'How to be awesome at Rails', :name => 'Joe Reis', :url =>'http://awesomenessandstuff.com')
