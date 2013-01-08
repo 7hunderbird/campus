@@ -1,1 +1,1 @@
-# Campus [![Build Status](https://secure.travis-ci.org/rubycommcollege/campus.png)](http://travis-ci.org/rubycommcollege/campus)
+# Campus [![Build Status](https://travis-ci.org/rubycommcollege/campus.png?branch=master)](https://travis-ci.org/rubycommcollege/campus)
