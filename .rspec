@@ -1,0 +1,19 @@
+<% 
+=begin
+%>
+Use tags to specify or ignore specific tests.
+
+# user_spec.rb
+it 'does something', :focus => true
+it 'is a slow test', :slow => true 
+it 'is a slow test', :speed => 'slow'
+
+--tag focus
+--tag ~@speed:slow
+<%
+=end
+%>
+
+--color
+--format documentation
+--tag ~@slow
