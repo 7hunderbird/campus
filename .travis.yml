@@ -6,3 +6,6 @@ before_script:
   - "bundle exec rake db:setup"
 script: 
   - "bundle exec rspec spec"
+notifications:
+  campfire:
+    secure: "CkyWMxTyTChSC+MEuw9XSToaWeXfYj4GkFnPpnbe2MMvR4JfL4xeWOfEvP1p\npMutF2R07+sfCukfQxrxydU8uhDBDnmRbCq4uockH48M4oGlwC7gUUKrdl74\nMSAMXUUeJdoeAGn+/zuEGRjl4xx8Yroom/RkXXcxVznbTjEbD14="
