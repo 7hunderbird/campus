@@ -1,7 +1,8 @@
 language: ruby
 rvm:
   - 1.9.3
-script: 
-  - bundle exec rspec spec
 before_script:
-  - cp config/database.yml.example config/database.yml
+  - "cp config/database.yml.example config/database.yml"
+  - "bundle exec rake db:setup"
+script: 
+  - "bundle exec rspec spec"
