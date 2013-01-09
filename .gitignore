@@ -5,3 +5,5 @@ tmp/
 .sass-cache/
 .project
 config/database.yml
+config/deploy.rb
+public/assets
