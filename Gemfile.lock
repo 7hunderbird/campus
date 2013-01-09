@@ -29,6 +29,7 @@ GEM
       i18n (~> 0.6)
       multi_json (~> 1.0)
     arel (3.0.2)
+    awesome_print (1.1.0)
     bcrypt-ruby (3.0.1)
     bourne (1.1.2)
       mocha (= 0.10.5)
@@ -97,6 +98,8 @@ GEM
       coderay (~> 1.0.5)
       method_source (~> 0.8)
       slop (~> 3.3.1)
+    pry-nav (0.2.3)
+      pry (~> 0.9.10)
     rack (1.4.3)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -179,6 +182,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  awesome_print
   coffee-rails (~> 3.2.2)
   devise (~> 2.2.0)
   factory_girl_rails (~> 4.1.0)
@@ -188,6 +192,8 @@ DEPENDENCIES
   json (~> 1.7.6)
   less-rails (~> 2.2.6)
   pg (~> 0.14.1)
+  pry
+  pry-nav
   rails (= 3.2.11)
   rb-fchange
   rb-fsevent

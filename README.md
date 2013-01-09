@@ -10,8 +10,8 @@ TODO: Add setup details
 Vagrant
 -------
 
-The project [campus-vagrant]() is used to create a virtual machine for campus. Currently it is a
-work in progress and should not be relied on (yet).
+The project [campus-vagrant](https://github.com/rubycommcollege/campus-vagrant) is used to create a
+virtual machine for campus. Currently it is a work in progress and should not be relied on (yet).
 
 TODO: Add vagrant usage details
 
@@ -56,3 +56,9 @@ will also publish notifications to the project Campfire.
 Travis is configured to run the build each time code is pushed to the repo. Get in the habit of
 running the test suite (`bundle exec rake spec`) **before** pushing your code to make sure your
 changes didn't break any tests. If you do break the build just be sure to fix it.
+
+Debugging
+=========
+
+To help with debugging the Gemfile includes [Pry](http://pryrepl.org/) and [Awesome
+Print](https://github.com/michaeldv/awesome_print).

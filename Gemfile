@@ -50,6 +50,9 @@ group :development, :test do
   gem 'rb-inotify', :require => false
   gem 'rb-fsevent', :require => false
   gem 'rb-fchange', :require => false
+  gem 'pry'
+  gem 'pry-nav'
+  gem 'awesome_print'
 end
 
 group :production do
