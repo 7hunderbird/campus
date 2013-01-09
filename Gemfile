@@ -1,17 +1,17 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.10'
+gem 'rails', '3.2.11'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
-gem 'json'
+gem 'json', '~> 1.7.6'
 
 # For Authentication
-gem 'devise'
+gem 'devise', '~> 2.2.0'
 
 # Twitter Bootstrap Dependency
-gem 'less-rails'
+gem 'less-rails', '~> 2.2.6'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -25,7 +25,7 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 
-  gem 'twitter-bootstrap-rails'
+  gem 'twitter-bootstrap-rails', '~> 2.2.0'
 end
 
 # To use ActiveModel has_secure_password
@@ -41,12 +41,12 @@ end
 # gem 'ruby-debug'
 
 group :development, :test do
-  gem 'sqlite3'
-  gem 'rspec-rails'
-  gem 'factory_girl_rails'
-  gem 'shoulda-matchers'
+  gem 'sqlite3', '~> 1.3.6'
+  gem 'rspec-rails', '~> 2.12.1'
+  gem 'factory_girl_rails', '~> 4.1.0'
+  gem 'shoulda-matchers', '~> 1.4.2'
 end
 
 group :production do
-  gem 'pg'
+  gem 'pg', '~> 0.14.1'
 end
