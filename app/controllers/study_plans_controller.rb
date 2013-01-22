@@ -1,6 +1,4 @@
 class StudyPlansController < ApplicationController
-  # GET /study_plans
-  # GET /study_plans.json
   def index
     @study_plans = StudyPlan.all
 
@@ -10,8 +8,6 @@ class StudyPlansController < ApplicationController
     end
   end
 
-  # GET /study_plans/1
-  # GET /study_plans/1.json
   def show
     @study_plan = StudyPlan.find(params[:id])
 
@@ -21,8 +17,6 @@ class StudyPlansController < ApplicationController
     end
   end
 
-  # GET /study_plans/new
-  # GET /study_plans/new.json
   def new
     @study_plan = StudyPlan.new
 
@@ -32,13 +26,10 @@ class StudyPlansController < ApplicationController
     end
   end
 
-  # GET /study_plans/1/edit
   def edit
     @study_plan = StudyPlan.find(params[:id])
   end
 
-  # POST /study_plans
-  # POST /study_plans.json
   def create
     @study_plan = StudyPlan.new(params[:study_plan])
 
@@ -53,8 +44,6 @@ class StudyPlansController < ApplicationController
     end
   end
 
-  # PUT /study_plans/1
-  # PUT /study_plans/1.json
   def update
     @study_plan = StudyPlan.find(params[:id])
 
@@ -69,8 +58,6 @@ class StudyPlansController < ApplicationController
     end
   end
 
-  # DELETE /study_plans/1
-  # DELETE /study_plans/1.json
   def destroy
     @study_plan = StudyPlan.find(params[:id])
     @study_plan.destroy
