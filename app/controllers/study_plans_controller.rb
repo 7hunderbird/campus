@@ -6,10 +6,10 @@ class StudyPlansController < ApplicationController
       format.html # index.html.erb
       format.json { render json: @study_plans }
     end
+  before_filter :load_study_plan, except: [:index, :new, :create]
   end
 
   def show
-    @study_plan = StudyPlan.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -26,9 +26,7 @@ class StudyPlansController < ApplicationController
     end
   end
 
-  def edit
-    @study_plan = StudyPlan.find(params[:id])
-  end
+  def edit; end
 
   def create
     @study_plan = StudyPlan.new(params[:study_plan])
@@ -45,7 +43,6 @@ class StudyPlansController < ApplicationController
   end
 
   def update
-    @study_plan = StudyPlan.find(params[:id])
 
     respond_to do |format|
       if @study_plan.update_attributes(params[:study_plan])
@@ -59,12 +56,17 @@ class StudyPlansController < ApplicationController
   end
 
   def destroy
-    @study_plan = StudyPlan.find(params[:id])
     @study_plan.destroy
 
     respond_to do |format|
       format.html { redirect_to study_plans_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  def load_study_plan
+    @study_plan = StudyPlan.find(params[:id])
   end
 end
