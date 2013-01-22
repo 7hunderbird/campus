@@ -1,58 +1,35 @@
 class StudyPlansController < ApplicationController
   def index
     @study_plans = StudyPlan.all
+  respond_to :html, :json
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @study_plans }
-    end
   before_filter :load_study_plan, except: [:index, :new, :create]
+    respond_with @study_plans
   end
 
   def show
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @study_plan }
-    end
+    respond_with @study_plan
   end
 
   def new
     @study_plan = StudyPlan.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @study_plan }
-    end
+    respond_with @study_plan
   end
 
   def edit; end
 
   def create
     @study_plan = StudyPlan.new(params[:study_plan])
-
-    respond_to do |format|
-      if @study_plan.save
-        format.html { redirect_to @study_plan, notice: 'Study plan was successfully created.' }
-        format.json { render json: @study_plan, status: :created, location: @study_plan }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @study_plan.errors, status: :unprocessable_entity }
-      end
-    end
+    flash[:notice] = "Study plan was successfully created." if @study_plan.save
+    respond_with @study_plan
   end
 
   def update
 
-    respond_to do |format|
-      if @study_plan.update_attributes(params[:study_plan])
-        format.html { redirect_to @study_plan, notice: 'Study plan was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @study_plan.errors, status: :unprocessable_entity }
-      end
     end
+
+    flash[:notice] = "Study plan was successfully updated" if @study_plan.update_attributes(params[:study_plan])
+    respond_with @study_plan
   end
 
   def destroy
