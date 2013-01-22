@@ -62,3 +62,10 @@ Debugging
 
 To help with debugging the Gemfile includes [Pry](http://pryrepl.org/) and [Awesome
 Print](https://github.com/michaeldv/awesome_print).
+
+Sample Data
+===========
+
+To run sample data to add courses, just run: bundle exec rake db:load_samples # app rake task to load sample data
+
+
