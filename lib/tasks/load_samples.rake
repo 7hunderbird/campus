@@ -1,4 +1,3 @@
-# lib/tasks/load_samples.rake
 namespace :db do
   desc "Load the sample data from db/sample"
   task :load_samples => :environment do
@@ -14,3 +13,4 @@ namespace :db do
     end
   end
 end
+
