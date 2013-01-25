@@ -3,6 +3,7 @@ rvm:
   - 1.9.3
 before_script:
   - "cp config/database.yml.example config/database.yml"
+  - "cp config/initializers/secret_token.rb.example config/initializers/secret_token.rb"
   - "bundle exec rake db:setup"
 script: 
   - "bundle exec rspec spec"
