@@ -4,7 +4,7 @@ class StudyPlansController < ApplicationController
   before_filter :load_study_plan, except: [:index, :new, :create]
 
   def index
-    @study_plans = StudyPlan.all
+    @study_plans = params[:user_id] ? current_user.study_plans : StudyPlan.all
     respond_with @study_plans
   end
 
