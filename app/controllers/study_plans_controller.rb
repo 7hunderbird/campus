@@ -1,9 +1,10 @@
 class StudyPlansController < ApplicationController
-  def index
-    @study_plans = StudyPlan.all
   respond_to :html, :json
 
   before_filter :load_study_plan, except: [:index, :new, :create]
+
+  def index
+    @study_plans = StudyPlan.all
     respond_with @study_plans
   end
 
