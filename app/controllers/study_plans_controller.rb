@@ -25,7 +25,10 @@ class StudyPlansController < ApplicationController
   end
 
   def update
-
+    # sets assoc if updating from nested resource (/users/:user_id/study_plans/:id)
+    if params[:user_id]
+      @user = User.find(params[:user_id])
+      @study_plan.user = @user
     end
 
     flash[:notice] = "Study plan was successfully updated" if @study_plan.update_attributes(params[:study_plan])

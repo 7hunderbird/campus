@@ -4,7 +4,8 @@ describe StudyPlansController do
 
   login_user
 
-  let!(:study_plan) { create(:study_plan) }
+  let!(:study_plan) { create(:study_plan_with_user) }
+  let!(:user) { study_plan.user }
 
   describe 'GET #index' do
     before { get :index }
@@ -88,7 +89,7 @@ describe StudyPlansController do
 
   describe 'PUT #update' do
     context 'with valid attributes' do
-      it 'assigns @study_plan'do
+      it 'assigns @study_plan' do
         put :update, id: study_plan, study_plan: attributes_for(:study_plan)
         expect(assigns :study_plan).to eq study_plan
       end
@@ -114,6 +115,18 @@ describe StudyPlansController do
       it 're-renders edit template' do
         put :update, id: study_plan, study_plan: attributes_for(:invalid_study_plan)
         expect(response).to render_template :edit
+      end
+    end
+
+    context 'when nested with user' do
+      it 'assings @user' do
+        put :update, id: study_plan, user_id: user.id, study_plan: attributes_for(:study_plan)
+        expect(assigns :user).to eq user
+      end
+
+      it 'assings @user' do
+        put :update, id: study_plan, user_id: user.id, study_plan: attributes_for(:study_plan)
+        expect(assigns :user).to eq user
       end
     end
   end

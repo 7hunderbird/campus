@@ -10,6 +10,10 @@
   <dd><%= @study_plan.due_date %></dd>
 </dl>
 
+<div>
+    <%= link_to "Sign up", user_study_plan_path(current_user), method: :put %>
+</div>
+
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
               study_plans_path, :class => 'btn'  %>
