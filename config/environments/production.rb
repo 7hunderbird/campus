@@ -59,8 +59,8 @@ Campus::Application.configure do
     domain: "rubycommunitycollege.com",
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: add_user_name_here,
-    password: add_password_here
+    user_name: "add_user_name_here",
+    password: "add_password_here"
   }
 
   # Enable threaded mode
