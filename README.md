@@ -63,6 +63,14 @@ Debugging
 To help with debugging the Gemfile includes [Pry](http://pryrepl.org/) and [Awesome
 Print](https://github.com/michaeldv/awesome_print).
 
+Email
+-----
+
+To test emails while in development visit
+[http://localhost:3000/letter_opener](http://localhost:3000/letter_opener/). This will show you sent
+emails using the Rails engine [letter_opener](https://github.com/fgrehm/letter_opener_web).
+
+
 Sample Data
 ===========
 

@@ -53,6 +53,7 @@ group :development, :test do
   gem 'pry'
   gem 'pry-nav'
   gem 'awesome_print'
+  gem 'letter_opener_web', '1.0.0.rc3'
 end
 
 group :production do
