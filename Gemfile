@@ -37,6 +37,10 @@ gem 'unicorn'
 # Deploy with Capistrano
 gem 'capistrano'
 
+# Pagination for easier search
+gem 'will_paginate', '~> 3.0'
+gem 'bootstrap-will_paginate'
+
 # To use debugger
 # gem 'ruby-debug'
 

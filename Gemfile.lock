@@ -32,6 +32,8 @@ GEM
     arel (3.0.2)
     awesome_print (1.1.0)
     bcrypt-ruby (3.0.1)
+    bootstrap-will_paginate (0.0.9)
+      will_paginate
     bourne (1.1.2)
       mocha (= 0.10.5)
     builder (3.0.4)
@@ -205,12 +207,14 @@ GEM
       raindrops (~> 0.7)
     warden (1.2.1)
       rack (>= 1.0)
+    will_paginate (3.0.3)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   awesome_print
+  bootstrap-will_paginate
   capistrano
   coffee-rails (~> 3.2.2)
   devise (~> 2.2.0)
@@ -236,3 +240,4 @@ DEPENDENCIES
   twitter-bootstrap-rails (~> 2.2.0)
   uglifier (>= 1.0.3)
   unicorn
+  will_paginate (~> 3.0)
