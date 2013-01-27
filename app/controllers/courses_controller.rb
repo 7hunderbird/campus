@@ -2,11 +2,8 @@ class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
   def index
-    #@courses = Course.all
-    #@users = User.paginate(page: params[:page])
-    #@courses = Course.paginate(page: params[:page])
     @courses = Course.paginate(page: params[:page], :per_page => 20)
-    #Post.paginate(:page => params[:page], :per_page => 30)
+
 
     respond_to do |format|
       format.html # index.html.erb
