@@ -1,0 +1,19 @@
+# Application configurations
+# Usage:
+#
+#     APP_CONFIG[:secret_token]
+#     APP_CONFIG[:mailer_host]
+#
+# Be sure to prefix 3rd party application api tokens with 'app_'
+#
+secret_token: "6a10d8e5f886d847c12a4391e59b4810fec7c0cfa43a8acccd029ed5f4ba9becf646118ee75bea50a5db287ee6f684a52283927e60d219fe66791f4ddc3462da" 
+deploy_user: ""
+deploy_password: ""
+development:
+  mailer_host: "localhost:3000"
+test:
+  mailer_host: "test.local"
+production:
+  mailer_host: "rubycommunitycollege.com"
+  mailer_user_name: ""
+  mailer_password: ""

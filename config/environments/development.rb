@@ -30,7 +30,7 @@ Campus::Application.configure do
   config.action_mailer.raise_delivery_errors = true
 
   # Devise requires a default Mailer configuration.
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = { :host => APP_CONFIG[:mailer_host] }
 
   config.action_mailer.delivery_method = ENV['USER'] == 'vagrant' ? :letter_opener_web : :letter_opener
 end

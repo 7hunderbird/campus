@@ -5,7 +5,19 @@ TODO: Add project description
 Setup
 =====
 
-TODO: Add setup details
+Application Config
+------------------
+
+To get started with Campus you'll need to set the applcation configs and setup your database.yml
+file. Run the following commands to copy the appropiate files:
+
+```shell
+cp config/examples/application.yml config
+cp config/examples/database.yml.sqlite config/database.yml
+```
+
+If your environment is development then the default `application.yml` configs will work for you. If you
+need to run in another environment, be sure to edit the file and set the values.
 
 Vagrant
 -------
