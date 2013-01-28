@@ -3,6 +3,7 @@ rvm:
   - 1.9.3
 before_script:
   - "cp config/examples/database.yml.sqlite config/database.yml"
+  - "cp config/examples/application.yml config/application.yml"
   - "bundle exec rake db:setup"
 script: 
   - "bundle exec rspec spec"
