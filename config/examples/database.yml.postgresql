@@ -1,0 +1,30 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: campus_development
+  pool: 5
+  username: campus 
+  password:
+  host: localhost
+  port: 5432
+ 
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: campus_test
+  pool: 5
+  username: campus
+  password:
+  host: localhost
+  port: 5432
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: campus_production
+  pool: 5
+  username: campus
+  password:
+  host: localhost
+  port: 5432
+

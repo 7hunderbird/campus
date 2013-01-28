@@ -49,7 +49,7 @@ Campus::Application.configure do
   # config.action_mailer.raise_delivery_errors = false
 
   # Devise requires a default Mailer configuration.
-  config.action_mailer.default_url_options = { :host => 'rubycommunitycollege.com' }
+  config.action_mailer.default_url_options = { :host => APP_CONFIG[:mailer_host] }
 
   config.action_mailer.delivery_method = :smtp
 
@@ -59,8 +59,8 @@ Campus::Application.configure do
     port: 587,
     domain: "rubycommunitycollege.com",
     authentication: "plain",
-    user_name: "add_user_name_here",
-    password: "add_password_here"
+    user_name: APP_CONFIG[:mailer_user_name],
+    password: APP_CONFIG[:mailer_password]
   }
 
   # Enable threaded mode

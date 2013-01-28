@@ -6,11 +6,8 @@ tmp/
 .project
 config/database.yml
 
-# don't let sensitive info in the deploy.rb in the repo
-config/deploy.rb
-
 # when the assets are compiled locally, ignore them
 public/assets/
 
-# you are dead to me secret_token
-config/initializers/secret_token.rb
+# application configs need to stay out of repo
+config/application.yml
