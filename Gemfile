@@ -13,6 +13,9 @@ gem 'devise', '~> 2.2.0'
 # Twitter Bootstrap Dependency
 gem 'less-rails', '~> 2.2.6'
 
+# Exception notification
+gem 'airbrake'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

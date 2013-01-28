@@ -1,4 +1,6 @@
 require 'bundler/capistrano'
+require './config/boot'
+require 'airbrake/capistrano'
 
 # load 'deploy/assets'            # uncomment if manually precompile assets
 load 'config/application'         # load application config values from application.yml
@@ -77,3 +79,10 @@ namespace :deploy do
   end
 end
 
+# Deploys your current application.yml file
+namespace :deploy do
+  desc "Deploys config file" 
+  task :app_config do
+    put File.read("config/application.yml"), "#{shared_path}/config/application.yml"
+  end
+end
