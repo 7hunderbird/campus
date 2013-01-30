@@ -7,6 +7,8 @@ before_script:
   - "bundle exec rake db:setup"
 script: 
   - "bundle exec rspec spec"
+# To create the encrypted key run the following from the project directory:
+#     travis encrypt "perpetualawesome:api_token@537318
 notifications:
   campfire:
-    secure: "CkyWMxTyTChSC+MEuw9XSToaWeXfYj4GkFnPpnbe2MMvR4JfL4xeWOfEvP1p\npMutF2R07+sfCukfQxrxydU8uhDBDnmRbCq4uockH48M4oGlwC7gUUKrdl74\nMSAMXUUeJdoeAGn+/zuEGRjl4xx8Yroom/RkXXcxVznbTjEbD14="
+    secure: "RCF8yyeVVGFPbmYMebZouN+XRfbklah/ZCm/Xs8P17Kx7gp1C1akUZP7IOfI\naXAmG6PiQ4GJjEykiM9Pn9biNlTbF56t/ne+kIpQEjr9JnheVmFWru0pK8vH\n4CAwZupfSJp+q/VkeUS29HPy0EemWLWnnyhtjoZr0QIjbe36JfE="
