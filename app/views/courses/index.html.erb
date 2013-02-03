@@ -3,14 +3,22 @@
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
 </div>
 
+<div class="pull-left">
+	<strong>Courses you manage.</strong>
+</div>
+<div class="pull-right">
+	<%= link_to 'New Course',
+            new_course_path,
+            :class => 'btn btn-primary' %>
+</div>
+
 <%= will_paginate %>
 
-<table class="table table-striped">
+<table class="table table-striped list">
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:url) %></th>
       <th><%= model_class.human_attribute_name(:description) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
@@ -19,9 +27,8 @@
   <tbody>
     <% @courses.each do |course| %>
       <tr>
-        <td><%= link_to course.id, course_path(course) %></td>
-        <td><%= course.name %></td>
-        <td><%= course.url %></td>
+        <td><%= course.id %></td>
+        <td><%= link_to course.name, course_path(course) %></td>
         <td><%= course.description %></td>
         <td><%=l course.created_at %></td>
         <td>
@@ -39,7 +46,3 @@
 </table>
 
 <%= will_paginate %>
-
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_course_path,
-            :class => 'btn btn-primary' %>

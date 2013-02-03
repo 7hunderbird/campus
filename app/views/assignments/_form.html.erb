@@ -1,8 +1,8 @@
-<%= form_for @assignment, :html => { :class => 'form-horizontal' } do |f| %>
+<%= form_for [@course, @assignment], :html => { :class => 'form-horizontal' } do |f| %>
   <div class="control-group">
-    <%= f.label :url, :class => 'control-label' %>
+    <%= f.label :title, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :url, :class => 'text_field' %>
+      <%= f.text_field :title, :class => 'text_field' %>
     </div>
   </div>
   <div class="control-group">
@@ -11,16 +11,9 @@
       <%= f.date_select :due_date, :class => 'date_select' %>
     </div>
   </div>
-  <div class="control-group">
-    <%= f.label :title, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :title, :class => 'text_field' %>
-    </div>
-  </div>
-
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                assignments_path, :class => 'btn' %>
+                :back, :class => 'btn' %>
   </div>
 <% end %>

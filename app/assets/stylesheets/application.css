@@ -5,3 +5,12 @@
  *= require_self
  *= require_tree . 
 */
+
+.table-striped td:last-child, .table-striped th:last-child {
+	white-space: nowrap;
+	text-align: right;
+}
+
+.table-striped td:nth-child(2) {
+	width: 20%;
+}

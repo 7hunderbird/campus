@@ -6,9 +6,15 @@ Campus::Application.routes.draw do
 
   resources :study_plans
 
-  resources :assignments
+  
 
-  resources :courses
+  resources :courses do
+    resources :assignments do
+      resources :tasks
+    end  
+  end
+  
+  resources :tasks
 
   root :to => 'courses#index'
 
