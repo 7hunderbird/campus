@@ -62,6 +62,7 @@ group :development, :test do
   gem 'pry-nav'
   gem 'awesome_print'
   gem 'letter_opener_web', '1.0.0.rc3'
+  gem 'foreman'
 end
 
 group :production do
