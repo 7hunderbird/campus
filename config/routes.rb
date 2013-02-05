@@ -12,6 +12,10 @@ Campus::Application.routes.draw do
 
   resources :topics
 
+  resources :users do
+    resources :study_plans
+  end
+
   root :to => 'courses#index'
 
   # web interface for testing email delivery in development

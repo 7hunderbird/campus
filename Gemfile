@@ -50,6 +50,7 @@ gem 'bootstrap-will_paginate'
 group :development, :test do
   gem 'sqlite3', '~> 1.3.6'
   gem 'rspec-rails', '~> 2.12.1'
+  gem 'capybara'
   gem 'factory_girl_rails', '~> 4.1.0'
   gem 'shoulda-matchers', '~> 1.4.2'
   gem 'guard'

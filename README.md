@@ -30,6 +30,24 @@ TODO: Add vagrant usage details
 Testing
 =======
 
+Specs will be created if you use the rails generators:
+
+```shell
+bundle exec rails g rspec:model user    #=> creates `spec/models/user_spec.rb`
+```
+
+Available generators:
+
+* controller
+* helper
+* install
+* integration
+* mailer
+* model
+* observer
+* scaffold
+* view
+
 To run all of the specs do either of the following:
 
 ```shell
@@ -54,6 +72,19 @@ tests when you save the file.
 
 ```shell
 bundle exec guard
+```
+
+Preparing the Test Database
+---------------------------
+
+Running `rake` or `rake spec` will also run the `db:test:prepare` task for you.  When using guard
+you'll have to run the prepare task yourself each time the database migrates.
+
+To make running the task easier you could create an alias:
+
+```
+alias migrate='bundle exec rake db:migrate && bundle exec rake
+db:test:prepare'
 ```
 
 Continuous Integration (Travis)
