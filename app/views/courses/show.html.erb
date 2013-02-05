@@ -1,20 +1,26 @@
 <%- model_class = Course -%>
 <div class="page-header">
-  <h1>Course: <%= @course.name %></h1>
-  <p class="lead"><%= @course.description %></p>
+	<h1>Course: <%= @course.name %></h1>
+	<p class="lead"><%= @course.description %></p>
+		<%= link_to t('.back', :default => t("helpers.links.back")),
+              courses_path, :class => 'btn'  %>
+  	<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_course_path(@course), :class => 'btn' %>
+  	<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              course_path(@course),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>	
 </div>
 
-<div class="pull-left">
-	<strong>Assignments for this course.</strong>
-</div>
-<div class="pull-right">
-	<%= link_to "New Assignment", new_course_assignment_path(@course), :class => 'btn btn-primary' %>
-</div>
+<%= link_to "New Assignment", new_course_assignment_path(@course), :class => 'btn btn-primary btn-large' %>
 
+<br>
+<br>
 
 <table class="table table-striped">
 	<thead>
-		<th>Assignment</th>
+		<th>Assignments for this course.</th>
 		<th><%=t '.actions', :default => t("helpers.actions") %></th>
 	</thead>
 	<% @course.assignments.each do |assignment| %>
@@ -32,15 +38,3 @@
 		</tr>
 	<% end %>
 </table>
-
-<div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              courses_path, :class => 'btn'  %>
-  <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_course_path(@course), :class => 'btn' %>
-  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              course_path(@course),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
-</div>

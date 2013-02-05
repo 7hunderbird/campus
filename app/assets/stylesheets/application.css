@@ -11,6 +11,10 @@
 	text-align: right;
 }
 
-.table-striped td:nth-child(2) {
-	width: 20%;
+.table td:first-child {
+	white-space: nowrap;
+}
+
+.btn {
+	white-space: nowrap;
 }

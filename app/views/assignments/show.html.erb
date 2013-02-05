@@ -2,31 +2,33 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human %>: <%= @assignment.title %></h1>
   <p class="lead"><%= model_class.human_attribute_name(:due_date) %> :<%= @assignment.due_date %> </p>
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              course_path(@course), :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_course_assignment_path(@course, @assignment), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              course_assignment_path(@course, @assignment),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
 </div>
 
+<%= link_to 'New Task', new_course_assignment_task_path(@course, @assignment), :class => 'btn btn-primary btn-large' %>
 
-<div class="pull-left">
-	<strong>Tasks for this assignment.</strong>
-</div>
-<div class="pull-right">
-	<%= link_to 'New Task', new_course_assignment_task_path(@course, @assignment), :class => 'btn btn-primary' %>
-</div>
+<br>
+<br>
 
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:description) %></th>
+      <th>Tasks in this assignment.</th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
     <% @assignment.tasks.each do |task| %>
       <tr>
-        <td><%= task.id %></td>
-        <td><%= link_to task.name, course_assignment_task_path(@course, @assignment, task) %></td>
-        <td><%= task.description %></td>        
+        <td><%= link_to task.name, course_assignment_task_path(@course, @assignment, task) %></td>        
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_course_assignment_task_path(@course, @assignment, task), :class => 'btn btn-mini' %>
@@ -40,15 +42,3 @@
     <% end %>
   </tbody>
 </table>
-
-<div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              course_path(@course), :class => 'btn'  %>
-  <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_course_assignment_path(@course, @assignment), :class => 'btn' %>
-  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              course_assignment_path(@course, @assignment),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
-</div>
