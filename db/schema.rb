@@ -11,15 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130202232250) do
+ActiveRecord::Schema.define(:version => 20130212090429) do
 
   create_table "assignments", :force => true do |t|
     t.string   "url"
     t.date     "due_date"
-    t.string   "title"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "name"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.integer  "course_id"
+    t.integer  "outline_id"
+    t.text     "description"
   end
 
   create_table "courses", :force => true do |t|
@@ -28,6 +30,33 @@ ActiveRecord::Schema.define(:version => 20130202232250) do
     t.text     "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "materials", :force => true do |t|
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "outline_id"
+    t.integer  "course_id"
+    t.string   "name"
+  end
+
+  create_table "outlines", :force => true do |t|
+    t.integer  "order_number"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "course_id"
+    t.string   "content_type"
+    t.integer  "content_id"
+  end
+
+  create_table "sections", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "outline_id"
+    t.integer  "course_id"
+    t.text     "description"
   end
 
   create_table "study_plans", :force => true do |t|

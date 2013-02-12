@@ -6,15 +6,10 @@
  *= require_tree . 
 */
 
-.table-striped td:last-child, .table-striped th:last-child {
-	white-space: nowrap;
-	text-align: right;
+[class*='icon']:hover {
+  text-decoration: none;
 }
 
-.table td:first-child {
-	white-space: nowrap;
-}
-
-.btn {
-	white-space: nowrap;
+.show {
+	display: inline;
 }

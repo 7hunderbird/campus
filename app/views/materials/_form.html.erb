@@ -1,14 +1,8 @@
-<%= form_for [@course, @assignment], :html => { :class => 'form-horizontal' } do |f| %>
+<%= form_for [@course, @material], :html => { :class => 'form-horizontal' } do |f| %>
   <div class="control-group">
     <%= f.label :name, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :name, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :due_date, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.date_select :due_date, :class => 'date_select' %>
     </div>
   </div>
   <div class="control-group">

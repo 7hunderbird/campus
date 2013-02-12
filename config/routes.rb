@@ -9,9 +9,9 @@ Campus::Application.routes.draw do
   
 
   resources :courses do
-    resources :assignments do
-      resources :tasks
-    end  
+    resources :materials
+    resources :sections
+    resources :assignments
   end
   
   resources :tasks

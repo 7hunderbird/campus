@@ -3,38 +3,30 @@
 	<h1>Course: <%= @course.name %></h1>
 	<p class="lead"><%= @course.description %></p>
 		<%= link_to t('.back', :default => t("helpers.links.back")),
-              courses_path, :class => 'btn'  %>
+              courses_path, :class => 'btn btn-mini'  %>
   	<%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_course_path(@course), :class => 'btn' %>
+              edit_course_path(@course), :class => 'btn btn-mini' %>
   	<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
               course_path(@course),
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>	
+              :class => 'btn btn-danger btn-mini' %>	
 </div>
 
-<%= link_to "New Assignment", new_course_assignment_path(@course), :class => 'btn btn-primary btn-large' %>
+<div class="well">
+	<% @course.outlines.sort_by {|obj| obj.order_number}.each do |outline| %>
+		<% model = outline.content_type.camelize.constantize %>
+		<% content = model.where(:id => outline.content_id).first %>
+		<div class="outline-content <%= model.model_name.human.downcase %>">
+			<%= link_to '', "#{@course.id}/#{model.model_name.human.downcase}s/#{content.id}", :method => :delete, :confirm => 'Are you sure?', :class => 'icon-large icon-trash'%>
+			<%= link_to '', "#{@course.id}/#{model.model_name.human.downcase}s/#{content.id}/edit", :class => 'icon-large icon-pencil'%>
+			<span class="<%= model.model_name.human.downcase %>"><%= content.name %></span>
+			<p><%= content.description %></p>
+		</div>
 
-<br>
-<br>
-
-<table class="table table-striped">
-	<thead>
-		<th>Assignments for this course.</th>
-		<th><%=t '.actions', :default => t("helpers.actions") %></th>
-	</thead>
-	<% @course.assignments.each do |assignment| %>
-		<tr>
-			<td><%= link_to assignment.title, course_assignment_path(@course, assignment) %></td>
-			<td>
-	          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-	                      edit_course_assignment_path(@course, assignment), :class => 'btn btn-mini' %>
-	          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-	                      course_assignment_path(@course, assignment),
-	                      :method => :delete,
-	                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-	                      :class => 'btn btn-mini btn-danger' %>
-	        </td>
-		</tr>
 	<% end %>
-</table>
+</div>
+
+<%= link_to "New Section", new_course_section_path(@course), :class => 'btn btn-primary' %>
+<%= link_to "New Assignment", new_course_assignment_path(@course), :class => 'btn btn-primary' %>
+<%= link_to "Add Course Material", new_course_material_path(@course), :class => 'btn btn-primary' %>

@@ -47,14 +47,23 @@ class AssignmentsController < ApplicationController
   # POST /assignments
   # POST /assignments.json
   def create
-    @assignment = @course.assignments.build(params[:assignment])
+    @assignment = @course.assignments.new(params[:assignment])
+    @assignment.save
+    @outline = Outline.where("course_id = ?", @course.id).last.order_number
+    if @outline.nil?
+      i = 0
+    else
+      i = @outline
+    end
+    i += 1
+    @content = Outline.new(:course_id => @course.id, :content_type => 'Assignment', :order_number => i, :content_id => @assignment.id)
+    @content.save
+    
     respond_to do |format|
       if @assignment.save
-        format.html { redirect_to course_assignment_path(@course, @assignment), notice: 'Assignment was successfully created. Add tasks for students to complete in order to finish this assignment' }
-        format.json { render json: @assignment, status: :created, location: @assignment }
+        format.html { redirect_to course_path(@course), notice: 'Assignment was successfully created.' }
       else
         format.html { render action: "new" }
-        format.json { render json: @assignment.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -66,7 +75,7 @@ class AssignmentsController < ApplicationController
 
     respond_to do |format|
       if @assignment.update_attributes(params[:assignment])
-        format.html { redirect_to course_assignment_path(@course, @assignment), notice: 'Assignment was successfully updated.' }
+        format.html { redirect_to course_path(@course), notice: 'Assignment was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -79,6 +88,7 @@ class AssignmentsController < ApplicationController
   def destroy
     @assignment = Assignment.find(params[:id])
     @assignment.destroy
+    Outline.where("content_id = ? AND content_type = ?", @assignment.id, 'Assignment').first.destroy
 
     respond_to do |format|
       format.html { redirect_to @course, notice: 'Assignment was successfully destroyed.' }
