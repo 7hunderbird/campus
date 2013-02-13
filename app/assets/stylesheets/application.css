@@ -5,3 +5,11 @@
  *= require_self
  *= require_tree . 
 */
+
+[class*='icon']:hover {
+  text-decoration: none;
+}
+
+.show {
+	display: inline;
+}

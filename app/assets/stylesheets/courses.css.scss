@@ -1,3 +1,52 @@
 // Place all the styles related to the courses controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+div.outline-content:hover {
+  background-color: rgba(255,255,255,0.9);
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+}
+
+div.outline-content {
+  [class*='icon'] {
+    float: right;
+    padding-right: 5px;
+    display: none;
+  }
+}
+
+span.section {
+  font-size: 30px;
+}
+
+div.section {
+  padding: 20px 10px;
+  margin-bottom: 10px;
+  p {
+    padding: 5px 10px 0px 2px;
+    margin: 0px; 
+  }
+}
+
+span.assignment {
+  font-size: 20px;
+}
+
+div.assignment {
+  padding: 20px 20px;
+  margin-bottom: 10px;  
+}
+
+span.material {
+  font-size: 13px;
+  font-weight: bold;
+}
+
+div.material {
+  padding: 20px 20px;
+  margin-bottom: 10px;
+}
+
+

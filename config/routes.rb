@@ -6,9 +6,15 @@ Campus::Application.routes.draw do
 
   resources :study_plans
 
-  resources :assignments
+  
 
-  resources :courses
+  resources :courses do
+    resources :materials
+    resources :sections
+    resources :assignments
+  end
+  
+  resources :tasks
 
   resources :topics
 
