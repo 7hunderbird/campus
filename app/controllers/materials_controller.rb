@@ -13,7 +13,7 @@ class MaterialsController < ApplicationController
   def create
     @material = @course.materials.build(params[:material])
     @material.save
-    @outline = Outline.where("course_id = ?", @course.id).last.order_number
+    @outline = Outline.where("course_id = ?", @course.id).last.try(:order_number)
     if @outline.nil?
       i = 0
     else
