@@ -49,19 +49,14 @@ class AssignmentsController < ApplicationController
   def create
     @assignment = @course.assignments.new(params[:assignment])
     @assignment.save
-    @outline = Outline.where("course_id = ?", @course.id).last.try(:order_number)
-    if @outline.nil?
-      i = 0
-    else
-      i = @outline
-    end
-    i += 1
+    @outline = Outline.where("course_id = ?", @course.id).all
+    @outline.nil? ? i = 1 : i = @outline.sort_by {|x| x.order_number}.last.order_number += 1
     @content = Outline.new(:course_id => @course.id, :content_type => 'Assignment', :order_number => i, :content_id => @assignment.id)
     @content.save
     
     respond_to do |format|
       if @assignment.save
-        format.html { redirect_to course_path(@course), notice: 'Assignment was successfully created.' }
+        format.html { redirect_to edit_course_path(@course), notice: 'Assignment was successfully created.' }
       else
         format.html { render action: "new" }
       end
@@ -91,7 +86,7 @@ class AssignmentsController < ApplicationController
     Outline.where("content_id = ? AND content_type = ?", @assignment.id, 'Assignment').first.destroy
 
     respond_to do |format|
-      format.html { redirect_to @course, notice: 'Assignment was successfully destroyed.' }
+      format.html { redirect_to edit_course_path(@course), notice: 'Assignment was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

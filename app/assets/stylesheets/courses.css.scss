@@ -9,12 +9,17 @@ div.outline-content:hover {
   border-radius: 6px;
 }
 
+ul#outline {
+  list-style: none;
+}
+
 div.outline-content {
   [class*='icon'] {
     float: right;
     padding-right: 5px;
     display: none;
   }
+  cursor: move;
 }
 
 span.section {
@@ -49,4 +54,9 @@ div.material {
   margin-bottom: 10px;
 }
 
-
+#edit-course-actions {
+  margin-top: 100px; 
+  .btn {
+    margin-bottom: 10px;
+  }
+}

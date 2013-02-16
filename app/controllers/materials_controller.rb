@@ -13,19 +13,14 @@ class MaterialsController < ApplicationController
   def create
     @material = @course.materials.build(params[:material])
     @material.save
-    @outline = Outline.where("course_id = ?", @course.id).last.try(:order_number)
-    if @outline.nil?
-      i = 0
-    else
-      i = @outline
-    end
-    i += 1
+    @outline = Outline.where("course_id = ?", @course.id).all
+    @outline.nil? ? i = 1 : i = @outline.sort_by {|x| x.order_number}.last.order_number += 1
     @content = Outline.new(:course_id => @course.id, :content_type => 'Material', :order_number => i, :content_id => @material.id)
     @content.save
     
     respond_to do |format|
       if @material.save
-        format.html { redirect_to course_path(@course), notice: 'Material was successfully created.' }
+        format.html { redirect_to edit_course_path(@course), notice: 'Material was successfully created.' }
       else
         format.html { render action: "new" }
       end
@@ -54,7 +49,7 @@ class MaterialsController < ApplicationController
     Outline.where("content_id = ? AND content_type = ?", @material.id, 'Material').first.destroy
 
     respond_to do |format|
-      format.html { redirect_to @course, notice: 'Material was successfully destroyed.' }
+      format.html { redirect_to edit_course_path(@course), notice: 'Material was successfully destroyed.' }
     end
   end
   

@@ -7,3 +7,8 @@ $("div.outline-content").mouseover ->
 
 $("div.outline-content").mouseout ->
   $(this).children("[class*='icon']").hide()
+
+$('#outline').sortable
+  axis: 'y'
+  update: ->
+    $.post($(this).data('update-outline'), $(this).sortable('serialize'))

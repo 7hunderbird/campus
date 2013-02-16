@@ -17,6 +17,10 @@ Campus::Application.routes.draw do
   resources :tasks
 
   resources :topics
+  
+  resources :outlines do
+    collection { post :order}
+  end
 
   resources :users do
     resources :study_plans

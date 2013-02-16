@@ -4,3 +4,28 @@
                                    :default => "Edit #{model_class.model_name.human}") %></h1>
 </div>
 <%= render :partial => 'form' %>
+
+<div class="well">
+	<ul id="outline" data-update-outline="<%= order_outlines_url %>">
+	<% @course.outlines.sort_by {|obj| obj.order_number}.each do |outline| %>
+		<% model = outline.content_type.camelize.constantize %>
+		<% content = model.where(:id => outline.content_id).first %>
+		<%= content_tag_for :li, outline do %>
+			<div class="outline-content <%= model.model_name.human.downcase %>">
+				<%= link_to '', "#{model.model_name.human.downcase}s/#{content.id}", :method => :delete, :confirm => 'Are you sure?', :class => 'icon-large icon-trash'%>
+				<%= link_to '', "#{model.model_name.human.downcase}s/#{content.id}/edit", :class => 'icon-large icon-pencil'%>
+				<span class="<%= model.model_name.human.downcase %>"><%= content.name %></span>
+				<p><%= content.description %></p>
+			</div>
+		<% end %>
+	<% end %>
+	</ul>
+</div>
+
+<%= content_for :sidebar do %>
+	<div class="span3" id="edit-course-actions">
+		<%= link_to "New Section", new_course_section_path(@course), :class => 'btn btn-primary span3 btn-large' %>
+		<%= link_to "New Assignment", new_course_assignment_path(@course), :class => 'btn btn-primary span3 btn-large' %>
+		<%= link_to "Add Course Material", new_course_material_path(@course), :class => 'btn btn-primary span3 btn-large' %>
+	</div>
+<% end %>

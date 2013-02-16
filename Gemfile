@@ -63,6 +63,7 @@ group :development, :test do
   gem 'awesome_print'
   gem 'letter_opener_web', '1.0.0.rc3'
   gem 'foreman'
+  gem 'meta_request', '0.2.1'
 end
 
 group :production do
