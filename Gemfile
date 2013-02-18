@@ -44,6 +44,9 @@ gem 'capistrano'
 gem 'will_paginate', '~> 3.0'
 gem 'bootstrap-will_paginate'
 
+# Search with elasticsearch (backend) and tire (gem)
+gem 'tire'
+
 # To use debugger
 # gem 'ruby-debug'
 
