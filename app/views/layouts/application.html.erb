@@ -30,6 +30,7 @@
               <li><%= link_to "Courses", courses_path %></li>
               <li><%= link_to "Study Plans", study_plans_path %></li>
               <% if user_signed_in? %>
+              <li><%= my_study_plans %></li>
               <li><%= link_to 'Edit profile', edit_user_registration_path, :style => 'color: blue' %></li>
               <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :style => 'color: red' %></li>
               <% end %>
