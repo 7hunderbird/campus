@@ -1,5 +1,6 @@
 .bundle
 db/*.sqlite3
+db/test.sqlite3-journal
 log/*.log
 tmp/
 .sass-cache/
@@ -11,3 +12,6 @@ public/assets/
 
 # application configs need to stay out of repo
 config/application.yml
+
+# we're only using the Procfile for local mac dev ATM
+Procfile.dev

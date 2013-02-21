@@ -6,20 +6,18 @@
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:url) %></th>
-      <th><%= model_class.human_attribute_name(:due_date) %></th>
       <th><%= model_class.human_attribute_name(:title) %></th>
+      <th><%= model_class.human_attribute_name(:due_date) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
-    <% @assignments.each do |assignment| %>
+    <% @course.assignments.each do |assignment| %>
       <tr>
-        <td><%= link_to assignment.id, assignment_path(assignment) %></td>
-        <td><%= assignment.url %></td>
-        <td><%= assignment.due_date %></td>
-        <td><%= assignment.title %></td>
+        <td><%= assignment.id %></td>
+        <td><%= link_to assignment.title, course_assignment_path(@course, assignment) %></td>
+        <td><%= assignment.due_date %></td>        
         <td><%=l assignment.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
@@ -36,5 +34,5 @@
 </table>
 
 <%= link_to t('.new', :default => t("helpers.links.new")),
-            new_assignment_path,
+            new_course_assignment_path(@course),
             :class => 'btn btn-primary' %>

@@ -1,25 +1,25 @@
 <%- model_class = Course -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
-</div>
-
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
-  <dd><%= @course.name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:url) %>:</strong></dt>
-  <dd><%= @course.url %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
-  <dd><%= @course.description %></dd>
-</dl>
-
-<div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              courses_path, :class => 'btn'  %>
-  <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_course_path(@course), :class => 'btn' %>
-  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+	<h1>Course: <%= @course.name %></h1>
+	<p class="lead"><%= @course.description %></p>
+		<%= link_to t('.back', :default => t("helpers.links.back")),
+              courses_path, :class => 'btn btn-mini'  %>
+  	<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_course_path(@course), :class => 'btn btn-mini' %>
+  	<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
               course_path(@course),
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
+              :class => 'btn btn-danger btn-mini' %>	
+</div>
+<h2>Course Outline</h2>
+<div class="well">
+	<% @course.outlines.sort_by {|obj| obj.order_number}.each do |outline| %>
+		<% model = outline.content_type.camelize.constantize %>
+		<% content = model.where(:id => outline.content_id).first %>
+		<div class="<%= model.model_name.human.downcase %>">
+			<span class="<%= model.model_name.human.downcase %>"><%= content.name %></span>
+		</div>
+
+	<% end %>
 </div>

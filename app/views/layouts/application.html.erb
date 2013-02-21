@@ -29,7 +29,11 @@
             <ul class="nav">
               <li><%= link_to "Courses", courses_path %></li>
               <li><%= link_to "Study Plans", study_plans_path %></li>
-              <li><%= link_to "Assignments", assignments_path %></li>
+              <% if user_signed_in? %>
+              <li><%= my_study_plans %></li>
+              <li><%= link_to 'Edit profile', edit_user_registration_path, :style => 'color: blue' %></li>
+              <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :style => 'color: red' %></li>
+              <% end %>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -43,22 +47,12 @@
             <%= yield %>
           </div>
           <div class="span3">
-            <div class="well sidebar-nav">
-              <h3>Sidebar</h3>
-              <% if user_signed_in? %>
-                Logged in as <strong><%= current_user.email %></strong>.
-                <%= link_to 'Edit profile', edit_user_registration_path %> |
-                <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-              <% else %>
-                <%= link_to "Sign up", new_user_registration_path %> |
-                <%= link_to "Login", new_user_session_path %>
-              <% end %>
-            </div><!--/.well -->
+						<%= yield :sidebar%>
           </div><!--/span-->
         </div><!--/row-->
 
       <footer>
-        <p>&copy; Ruby Community College 2012</p>
+        <p>&copy; Ruby Community College 2013</p>
       </footer>
 
     </div> <!-- /container -->

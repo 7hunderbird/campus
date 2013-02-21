@@ -2,7 +2,11 @@ class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
   def index
-    @courses = Course.paginate(page: params[:page], :per_page => 20)
+    if params[:query].present?
+      @courses = Course.search(params)
+    else
+      @courses = Course.paginate(page: params[:page], :per_page => 20)
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -41,6 +45,7 @@ class CoursesController < ApplicationController
   # POST /courses.json
   def create
     @course = Course.new(params[:course])
+    Outline.create(:course_id => @course.id)
 
     respond_to do |format|
       if @course.save

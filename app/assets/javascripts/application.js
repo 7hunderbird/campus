@@ -5,6 +5,9 @@
 // the compiled file.
 //
 //= require jquery
+//= require jquery-ui
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree .
+
+$('#edit-course-actions').affix();

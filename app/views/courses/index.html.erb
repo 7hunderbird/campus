@@ -1,29 +1,38 @@
 <%- model_class = Course -%>
+
+<%= form_tag courses_path, method: :get do %>
+  <p>
+    <%= text_field_tag :query, params[:query] %>
+    <%= submit_tag "Search", name: nil%>
+  </p>
+<% end %>
+
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
 </div>
 
+<%= link_to 'New Course',
+        new_course_path,
+        :class => 'btn btn-primary btn-large' %>
+
+<br>
+<br>
+
 <%= will_paginate %>
 
-<table class="table table-striped">
+<table class="table table-striped list">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:url) %></th>
       <th><%= model_class.human_attribute_name(:description) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
     <% @courses.each do |course| %>
       <tr>
-        <td><%= link_to course.id, course_path(course) %></td>
-        <td><%= course.name %></td>
-        <td><%= course.url %></td>
+        <td><%= link_to course.name, course_path(course) %></td>
         <td><%= course.description %></td>
-        <td><%=l course.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_course_path(course), :class => 'btn btn-mini' %>
@@ -39,7 +48,3 @@
 </table>
 
 <%= will_paginate %>
-
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_course_path,
-            :class => 'btn btn-primary' %>

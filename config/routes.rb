@@ -1,16 +1,40 @@
 Campus::Application.routes.draw do
 
+  get "static_pages/home"
+  get "static_pages/about"
+  get "static_pages/privacy"
+  get "static_pages/contact"
+
+  match 'home',    :to => 'static_pages#home'
+  match 'about',   :to => 'static_pages#about'
+  match 'privacy', :to => 'static_pages#privacy'
+  match 'contact', :to => 'static_pages#contact' 
+
   devise_for :users
 
   resources :users
 
   resources :study_plans
 
-  resources :assignments
+  resources :courses do
+    resources :materials
+    resources :sections
+    resources :assignments
+  end
+  
+  resources :tasks
 
-  resources :courses
+  resources :topics
+  
+  resources :outlines do
+    collection { post :order}
+  end
 
-  root :to => 'courses#index'
+  resources :users do
+    resources :study_plans
+  end
+
+  root :to => 'static_pages#home'
 
   # web interface for testing email delivery in development
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?

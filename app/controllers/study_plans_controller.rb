@@ -1,83 +1,58 @@
 class StudyPlansController < ApplicationController
-  # GET /study_plans
-  # GET /study_plans.json
+  respond_to :html, :json
+
+  before_filter :load_study_plan, except: [:index, :new, :create]
+
   def index
-    @study_plans = StudyPlan.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @study_plans }
+    if params[:query].present?
+      @study_plans = StudyPlan.search(params)
+    else
+      @study_plans = params[:user_id] ? current_user.study_plans : StudyPlan.all
     end
+
+    respond_with @study_plans
   end
 
-  # GET /study_plans/1
-  # GET /study_plans/1.json
   def show
-    @study_plan = StudyPlan.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @study_plan }
-    end
+    respond_with @study_plan
   end
 
-  # GET /study_plans/new
-  # GET /study_plans/new.json
   def new
     @study_plan = StudyPlan.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @study_plan }
-    end
+    respond_with @study_plan
   end
 
-  # GET /study_plans/1/edit
-  def edit
-    @study_plan = StudyPlan.find(params[:id])
-  end
+  def edit; end
 
-  # POST /study_plans
-  # POST /study_plans.json
   def create
     @study_plan = StudyPlan.new(params[:study_plan])
-
-    respond_to do |format|
-      if @study_plan.save
-        format.html { redirect_to @study_plan, notice: 'Study plan was successfully created.' }
-        format.json { render json: @study_plan, status: :created, location: @study_plan }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @study_plan.errors, status: :unprocessable_entity }
-      end
-    end
+    flash[:notice] = "Study plan was successfully created." if @study_plan.save
+    respond_with @study_plan
   end
 
-  # PUT /study_plans/1
-  # PUT /study_plans/1.json
   def update
-    @study_plan = StudyPlan.find(params[:id])
-
-    respond_to do |format|
-      if @study_plan.update_attributes(params[:study_plan])
-        format.html { redirect_to @study_plan, notice: 'Study plan was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @study_plan.errors, status: :unprocessable_entity }
-      end
+    # sets assoc if updating from nested resource (/users/:user_id/study_plans/:id)
+    if params[:user_id]
+      @user = User.find(params[:user_id])
+      @study_plan.user = @user
     end
+
+    flash[:notice] = "Study plan was successfully updated" if @study_plan.update_attributes(params[:study_plan])
+    respond_with @study_plan
   end
 
-  # DELETE /study_plans/1
-  # DELETE /study_plans/1.json
   def destroy
-    @study_plan = StudyPlan.find(params[:id])
     @study_plan.destroy
 
     respond_to do |format|
       format.html { redirect_to study_plans_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  def load_study_plan
+    @study_plan = StudyPlan.find(params[:id])
   end
 end
