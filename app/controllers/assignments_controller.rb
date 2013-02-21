@@ -50,7 +50,7 @@ class AssignmentsController < ApplicationController
     @assignment = @course.assignments.new(params[:assignment])
     @assignment.save
     @outline = Outline.where("course_id = ?", @course.id).all
-    @outline.nil? ? i = 1 : i = @outline.sort_by {|x| x.order_number}.last.order_number += 1
+    @outline.empty? ? i = 1 : i = @outline.sort_by {|x| x.order_number}.last.order_number += 1
     @content = Outline.new(:course_id => @course.id, :content_type => 'Assignment', :order_number => i, :content_id => @assignment.id)
     @content.save
     

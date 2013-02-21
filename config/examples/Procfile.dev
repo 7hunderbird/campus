@@ -1,0 +1,7 @@
+# Copy this file to Rails.root/Procfile.dev an run with the following:
+# 
+#     bundle exec foreman start -f Procfile.dev
+#
+db: postgres -D /usr/local/var/postgres 
+web: bundle exec rails server
+search: elasticsearch -f -D es.config=/usr/local/opt/elasticsearch/config/elasticsearch.yml

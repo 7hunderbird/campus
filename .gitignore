@@ -14,4 +14,4 @@ public/assets/
 config/application.yml
 
 # we're only using the Procfile for local mac dev ATM
-Procfile.dev
+/Procfile.dev
