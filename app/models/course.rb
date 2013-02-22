@@ -1,7 +1,8 @@
 class Course < ActiveRecord::Base
   # Model relationships
   belongs_to :user
-  belongs_to :study_plan
+  has_many   :study_plan_courses
+  has_many   :study_plans, :through   => :study_plan_courses
   has_many   :outlines,    :dependent => :destroy
   has_many   :assignments, :dependent => :destroy
   has_many   :sections,    :dependent => :destroy
