@@ -41,6 +41,7 @@ GEM
     bourne (1.1.2)
       mocha (= 0.10.5)
     builder (3.0.4)
+    cancan (1.6.9)
     capistrano (2.14.2)
       highline
       net-scp (>= 1.0.0)
@@ -257,6 +258,7 @@ DEPENDENCIES
   airbrake
   awesome_print
   bootstrap-will_paginate
+  cancan
   capistrano
   capybara
   coffee-rails (~> 3.2.2)

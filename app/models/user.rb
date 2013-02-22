@@ -9,5 +9,10 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :email, :first_name, :last_name
 
+  # Setup roles for authentication with cancan.
+  ROLES = %w[admin faculty student]
+
+  # Model relationships.
   has_many :study_plans
+
 end

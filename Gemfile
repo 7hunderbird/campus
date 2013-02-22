@@ -10,6 +10,9 @@ gem 'json', '~> 1.7.7'
 # For Authentication
 gem 'devise', '~> 2.2.3'
 
+# For Authorization
+gem 'cancan'
+
 # Twitter Bootstrap Dependency
 gem 'less-rails', '~> 2.2.6'
 
