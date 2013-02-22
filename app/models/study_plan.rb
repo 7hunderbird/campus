@@ -1,9 +1,11 @@
 class StudyPlan < ActiveRecord::Base
+  # Model relationships
+  belongs_to :user
+  has_many   :courses
+
   attr_accessible :due_date, :name
 
   validates :name, presence: true
-
-  belongs_to :user
 
   # Search capability through elasticsearch (backend) and tire (gem)
   include Tire::Model::Search
