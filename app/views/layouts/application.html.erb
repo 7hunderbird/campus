@@ -24,15 +24,18 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">Campus</a>
+          <%= link_to "Campus", static_pages_home_path, :class => "brand" %>
           <div class="container nav-collapse">
             <ul class="nav">
+              <% if user_signed_in? %>
               <li><%= link_to "Courses", courses_path %></li>
               <li><%= link_to "Study Plans", study_plans_path %></li>
-              <% if user_signed_in? %>
               <li><%= my_study_plans %></li>
               <li><%= link_to 'Edit profile', edit_user_registration_path, :style => 'color: blue' %></li>
               <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :style => 'color: red' %></li>
+              <% if can? :manage, :all %><li><%= link_to "Admin", admin_root_path %></li><% end %>
+              <% elsif !user_signed_in? %>
+              <li><%= link_to "Login", user_session %></li>
               <% end %>
             </ul>
           </div><!--/.nav-collapse -->

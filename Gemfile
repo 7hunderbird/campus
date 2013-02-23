@@ -19,6 +19,9 @@ gem 'less-rails', '~> 2.2.6'
 # Exception notification
 gem 'airbrake'
 
+# Let's administrate!
+gem 'activeadmin'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
