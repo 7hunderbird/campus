@@ -7,6 +7,8 @@ before_script:
   - "bundle exec rake db:setup"
 script: 
   - "bundle exec rspec spec"
+services:
+  - elasticsearch
 # To create the encrypted key run the following from the project directory:
 #     travis encrypt "perpetualawesome:api_token@537318
 notifications:

@@ -1,14 +1,17 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.11'
+gem 'rails', '3.2.12'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
-gem 'json', '~> 1.7.6'
+gem 'json', '~> 1.7.7'
 
 # For Authentication
-gem 'devise', '~> 2.2.0'
+gem 'devise', '~> 2.2.3'
+
+# For Authorization
+gem 'cancan'
 
 # Twitter Bootstrap Dependency
 gem 'less-rails', '~> 2.2.6'
@@ -19,16 +22,17 @@ gem 'airbrake'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.5'
+  gem 'sass-rails',   '~> 3.2.6'
   gem 'coffee-rails', '~> 3.2.2'
-  gem 'jquery-rails', '~> 2.1.4'
+  gem 'jquery-rails', '~> 2.2.1'
   
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'therubyracer', '~> 0.10.2', :platforms => :ruby
 
+  # TODO: Why is this 1.0.3 when the latest is 1.3.0?
   gem 'uglifier', '>= 1.0.3'
 
-  gem 'twitter-bootstrap-rails', '~> 2.2.0'
+  gem 'twitter-bootstrap-rails', '~> 2.2.4'
 end
 
 # To use ActiveModel has_secure_password
@@ -43,6 +47,9 @@ gem 'capistrano'
 # Pagination for easier search
 gem 'will_paginate', '~> 3.0'
 gem 'bootstrap-will_paginate'
+
+# Search with elasticsearch (backend) and tire (gem)
+gem 'tire'
 
 # To use debugger
 # gem 'ruby-debug'

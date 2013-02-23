@@ -19,6 +19,30 @@ cp config/examples/database.yml.sqlite config/database.yml
 If your environment is development then the default `application.yml` configs will work for you. If you
 need to run in another environment, be sure to edit the file and set the values.
 
+Search
+------
+
+For Mac users, it's quickest to use Homebrew and follow the instructions:
+
+```shell
+$ brew install elasticsearch
+```
+
+This would give you a quick install of elasticsearch to the current folder in your linux shell:
+
+```shell
+$ curl -k -L -o elasticsearch-0.20.4.tar.gz http://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-0.20.4.tar.gz
+$ tar -zxvf elasticsearch-0.20.4.tar.gz
+$ ./elasticsearch-0.20.4/bin/elasticsearch -f
+```
+
+Finally, if the search doesn't seem to return values, you may need to index by running `rake db:seed` to cause the indexes to fire.  If you don't have any courses, enter some or use the Sample Data command below to add some.
+
+Sample Data
+-----------
+
+To run sample data to add courses, just run: bundle exec rake db:load_samples # app rake task to load sample data
+
 Vagrant
 -------
 
@@ -114,9 +138,5 @@ To test emails while in development visit
 emails using the Rails engine [letter_opener](https://github.com/fgrehm/letter_opener_web).
 
 
-Sample Data
-===========
-
-To run sample data to add courses, just run: bundle exec rake db:load_samples # app rake task to load sample data
 
 

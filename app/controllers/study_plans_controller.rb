@@ -4,7 +4,12 @@ class StudyPlansController < ApplicationController
   before_filter :load_study_plan, except: [:index, :new, :create]
 
   def index
-    @study_plans = params[:user_id] ? current_user.study_plans : StudyPlan.all
+    if params[:query].present?
+      @study_plans = StudyPlan.search(params)
+    else
+      @study_plans = params[:user_id] ? current_user.study_plans : StudyPlan.all
+    end
+
     respond_with @study_plans
   end
 
