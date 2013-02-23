@@ -1,4 +1,8 @@
 class User < ActiveRecord::Base
+  # Model relationships
+  has_many :study_plans
+  has_many :courses
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -9,5 +13,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :email, :first_name, :last_name
 
-  has_many :study_plans
+  # Setup roles for authentication with cancan.
+  ROLES = %w[admin faculty student]
+
 end

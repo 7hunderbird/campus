@@ -1,5 +1,7 @@
 Campus::Application.routes.draw do
 
+  ActiveAdmin.routes(self)
+
   get "static_pages/home"
   get "static_pages/about"
   get "static_pages/privacy"
