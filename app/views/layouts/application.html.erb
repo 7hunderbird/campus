@@ -35,7 +35,7 @@
               <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :style => 'color: red' %></li>
               <% if can? :manage, :all %><li><%= link_to "Admin", admin_root_path %></li><% end %>
               <% elsif !user_signed_in? %>
-              <li><%= link_to "Login", user_session %></li>
+              <li><%= link_to "Login", new_user_session_path %></li>
               <% end %>
             </ul>
           </div><!--/.nav-collapse -->
