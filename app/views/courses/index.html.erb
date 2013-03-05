@@ -11,9 +11,17 @@
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
 </div>
 
-<%= link_to 'New Course',
+<div class="row">
+	<div class="span6">
+		<h2>Courses You Manage</h2>
+	</div>
+	<div class="span3">
+		<%= link_to 'New Course',
         new_course_path,
-        :class => 'btn btn-primary btn-large' %>
+        :class => 'btn btn-primary btn-large pull-right' %>
+	</div>
+</div>
+
 
 <br>
 <br>
@@ -29,7 +37,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @courses.each do |course| %>
+    <% current_user.courses.each do |course| %>
       <tr>
         <td><%= link_to course.name, course_path(course) %></td>
         <td><%= course.description %></td>

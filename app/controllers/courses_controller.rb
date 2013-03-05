@@ -28,7 +28,7 @@ class CoursesController < ApplicationController
   # GET /courses/new
   # GET /courses/new.json
   def new
-    @course = Course.new
+    @course = current_user.courses.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -44,7 +44,7 @@ class CoursesController < ApplicationController
   # POST /courses
   # POST /courses.json
   def create
-    @course = Course.new(params[:course])
+    @course = current_user.courses.new(params[:course])
     Outline.create(:course_id => @course.id)
 
     respond_to do |format|
