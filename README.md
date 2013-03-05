@@ -27,7 +27,7 @@ Procfile and run.
 
 ```shell
 cp config/examples/Procfile.dev .
-bundle exec foreman start -f Procfile.dev`
+bundle exec foreman start -f Procfile.dev
 ```
 
 Search
