@@ -49,6 +49,9 @@ gem 'unicorn'
 # Deploy with Capistrano
 gem 'capistrano'
 
+# Your the data now dog! Datadog integrations here.
+gem 'dogapi'
+
 # Pagination for easier search
 gem 'will_paginate', '~> 3.0'
 gem 'bootstrap-will_paginate'

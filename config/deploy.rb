@@ -5,6 +5,10 @@ require 'airbrake/capistrano'
 # load 'deploy/assets'            # uncomment if manually precompile assets
 load 'config/application'         # load application config values from application.yml
 
+# data dog
+require "capistrano/datadog"
+set :datadog_api_key, APP_CONFIG[:datadog_api_key]
+
 # Application Settings
 set :application,   "campus"
 set :user,          APP_CONFIG[:deploy_user]
