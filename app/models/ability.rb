@@ -3,10 +3,16 @@ class Ability
 
   def initialize(user)
     user ||= User.new # guest user
-    
-    can :manage, :all if user.role == "admin"
-    can :manage, :all if user.role == "faculty"    
-    can :read,   :all if user.role == "student"
+
+    case user.role
+      when "admin"
+        can :manage, :all
+      when "faculty"
+        can :manage, Assignment
+        cannot [:destroy,:edit], Assignment
+      when "student"
+        can :read, :all
+    end
     
   end
 
