@@ -24,6 +24,10 @@ Campus::Application.routes.draw do
     resources :assignments
   end
   
+  resources :enrollments do
+    post 'course', :on => :member
+  end
+  
   resources :tasks
 
   resources :topics

@@ -29,6 +29,7 @@
             <ul class="nav">
               <% if user_signed_in? %>
               <li><%= link_to "Courses", courses_path %></li>
+              <li><%= link_to "Enrollments", enrollments_path %></li>
               <li><%= link_to "Study Plans", study_plans_path %></li>
               <li><%= my_study_plans %></li>
               <li><%= link_to 'Edit profile', edit_user_registration_path, :style => 'color: blue' %></li>

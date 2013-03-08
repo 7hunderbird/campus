@@ -23,5 +23,9 @@ class Course < ActiveRecord::Base
       query { string params[:query]} if params[:query].present?    
     end
   end
+  
+  def enrolled(user)
+    Enrollment.where(:user_id => user.id, :course_id => self.id).any?
+  end
 
 end

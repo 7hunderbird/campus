@@ -12,3 +12,6 @@ $('#outline').sortable
   axis: 'y'
   update: ->
     $.post($(this).data('update-outline'), $(this).sortable('serialize'))
+    
+$("#course-search").keyup ->
+  $(this).submit()

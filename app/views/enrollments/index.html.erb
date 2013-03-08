@@ -1,0 +1,24 @@
+<div class="page-header">
+  <h1>Courses You Are Enrolled In</h1>
+</div>
+
+<table class="table table-striped list">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Drop</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @courses.each do |course| %>
+      <tr>
+        <td><%= link_to course.name, course_path(course) %></td>
+        <td><%= course.description %></td>
+        <td>
+          <%= link_to 'Drop Course', enrollment_path(Enrollment.where(:course_id => course.id).first.id), :class => 'btn btn-danger btn-mini', :method => :delete %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

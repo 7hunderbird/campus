@@ -1,0 +1,28 @@
+<%= will_paginate %>
+
+<table class="table table-striped list">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Enroll</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @courses.each do |course| %>
+      <tr>
+        <td><%= link_to course.name, course_path(course) %></td>
+        <td><%= course.description %></td>
+        <td>
+        	<% if course.enrolled(current_user) %>
+          	<%= link_to 'Enrolled', '#', :class => 'btn disabled btn-mini' %>
+          <% else %>
+          	<%= link_to 'Enroll', course_enrollment_path(course), :class => 'btn btn-primary btn-mini', :method => :post %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate %>
