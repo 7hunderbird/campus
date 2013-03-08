@@ -37,7 +37,7 @@ group :assets do
   # TODO: Why is this 1.0.3 when the latest is 1.3.0?
   gem 'uglifier', '>= 1.0.3'
 
-  gem 'twitter-bootstrap-rails', '~> 2.2.4'
+  gem 'twitter-bootstrap-rails', '2.2.4'
 end
 
 # To use ActiveModel has_secure_password
@@ -48,6 +48,9 @@ gem 'unicorn'
 
 # Deploy with Capistrano
 gem 'capistrano'
+
+# Your the data now dog! Datadog integrations here.
+gem 'dogapi'
 
 # Pagination for easier search
 gem 'will_paginate', '~> 3.0'
