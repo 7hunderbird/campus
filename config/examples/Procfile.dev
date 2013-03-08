@@ -5,3 +5,4 @@
 db: postgres -D /usr/local/var/postgres 
 web: bundle exec rails server
 search: elasticsearch -f -D es.config=/usr/local/opt/elasticsearch/config/elasticsearch.yml
+log: tail -f log/development.log
