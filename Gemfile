@@ -79,6 +79,7 @@ group :development, :test do
   gem 'letter_opener_web', '1.0.0.rc3'
   gem 'foreman'
   gem 'meta_request', '0.2.1'
+  gem 'thin'
 end
 
 group :production do
