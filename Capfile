@@ -1,4 +1,6 @@
-load 'config/application'         # load application config values from application.yml
+require 'yaml'
+APP_CONFIG = YAML.load_file(File.join(Dir.pwd, 'config', 'application.yml'))
+
 require "capistrano/datadog"
 set :datadog_api_key, APP_CONFIG[:datadog_api_key]
 load 'deploy'
