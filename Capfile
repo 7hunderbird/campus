@@ -1,5 +1,6 @@
 require 'yaml'
-require 'activesupport'
+require 'active_support'
+
 APP_CONFIG = YAML.load_file(File.join(Dir.pwd, 'config', 'application.yml'))
 APP_CONFIG.symbolize_keys!
 
