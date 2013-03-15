@@ -16,7 +16,7 @@ set :keep_releases, 5
 
 # Git Settings
 set :scm,           :git
-set :branch,        "develop"
+set :branch,        "master"
 set :repository,    "git@github.com:rubycommcollege/campus.git"
 set :deploy_via,    :remote_cache
 

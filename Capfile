@@ -1,5 +1,9 @@
+require 'yaml'
+
+CONFIG = YAML.load_file(File.join(Dir.pwd, 'config', 'application.yml'))
+
 require "capistrano/datadog"
-set :datadog_api_key, "f85ccac36f1d530be66ade23264c1179"
+set :datadog_api_key, CONFIG["production"]["datadog_api_key"]
 
 load 'deploy'
 # Uncomment if you are using Rails' asset pipeline
