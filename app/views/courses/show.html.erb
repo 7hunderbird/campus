@@ -29,8 +29,22 @@
 		<% model = outline.content_type.camelize.constantize %>
 		<% content = model.where(:id => outline.content_id).first %>
 		<div class="<%= model.model_name.human.downcase %>">
-			<span class="<%= model.model_name.human.downcase %>"><%= content.name %></span>
+			<hr>
+			<span class="<%= model.model_name.human.downcase %>">
+				<% if outline.content_type == 'Assignment' %>
+					<span class="badge badge-info" style="font-weight: normal"><%= model %></span>
+				<% end %>
+				<%= content.name %>
+			</span>
+			<p><%= content.description %></p>
+			<% if outline.content_type == 'Assignment' && @course.enrolled(current_user) %>
+				<% homework = content.user_homework(current_user) %>
+				<% if homework.completed == true %>
+				<a class="btn btn-mini disabled"><i class="icon-ok"></i> Completed</a>
+				<% else %>
+					<%= link_to 'Mark as complete', complete_homework_path(homework), :class => 'btn btn-mini btn-primary', :id => "hw-#{homework.id}", :method => :put, :remote => true %>
+				<% end %>
+			<% end %>
 		</div>
-
 	<% end %>
 </div>

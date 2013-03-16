@@ -1,5 +1,11 @@
 Campus::Application.routes.draw do
 
+  get "homeworks/index"
+
+  get "homeworks/create"
+
+  get "homeworks/destroy"
+
   ActiveAdmin.routes(self)
 
   get "static_pages/home"
@@ -16,6 +22,10 @@ Campus::Application.routes.draw do
 
   resources :users
 
+  resources :homeworks do
+    put 'complete', :on => :member
+  end
+  
   resources :study_plans
 
   resources :courses do

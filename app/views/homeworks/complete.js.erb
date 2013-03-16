@@ -1,0 +1,3 @@
+$('#hw-<%= escape_javascript(@homework.id.to_s) %>').removeClass('btn-primary');
+$('#hw-<%= escape_javascript(@homework.id.to_s) %>').addClass('disabled');
+$('#hw-<%= escape_javascript(@homework.id.to_s) %>').html('<i class="icon-ok"></i> Completed');

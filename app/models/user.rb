@@ -2,7 +2,8 @@ class User < ActiveRecord::Base
   # Model relationships
   has_many :study_plans
   has_many :courses
-  has_many :enrollments
+  has_many :enrollments, :dependent => :destroy
+  has_many :homeworks, :dependent => :destroy
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
@@ -16,5 +17,9 @@ class User < ActiveRecord::Base
 
   # Setup roles for authentication with cancan.
   ROLES = %w[admin faculty student]
+  
+  def self.enrolled(course)
+    joins(:enrollments).where(:enrollments => {:course_id => course.id})
+  end
 
 end
