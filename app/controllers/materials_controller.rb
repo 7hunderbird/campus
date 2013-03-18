@@ -33,6 +33,7 @@ class MaterialsController < ApplicationController
   
   def update
     @material = Material.find(params[:id])
+    @material.update_attributes(params[:material])
     flash[:notice] = "Material succsessfully updated."
     redirect_to edit_course_path(@course)  
   end

@@ -33,6 +33,7 @@ class SectionsController < ApplicationController
   
   def update
     @section = Section.find(params[:id])
+    @section.update_attributes(params[:section])
     flash[:notice] = "Section succsessfully updated."
     redirect_to edit_course_path(@course)
   end
