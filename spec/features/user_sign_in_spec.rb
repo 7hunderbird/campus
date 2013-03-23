@@ -20,4 +20,15 @@ describe "User Sign In" do
 
     expect(page).to have_content "Invalid email or password."
   end
+
+  it "redirects to welcome page" do
+    visit new_user_session_path
+    fill_in "Email", with: @user.email
+    fill_in "Password", with: @user.password
+    click_button "Sign in"
+
+    expect(current_path).to eq welcome_path
+    expect(page).to have_content "Welcome"
+
+  end
 end

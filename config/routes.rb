@@ -3,16 +3,16 @@ Campus::Application.routes.draw do
   ActiveAdmin.routes(self)
 
   get "static_pages/home"
-  get "static_pages/welcome"
   get "static_pages/about"
   get "static_pages/privacy"
   get "static_pages/contact"
 
   match 'home',    :to => 'static_pages#home'
-  match 'welcome', :to => 'static_pages#welcome'
   match 'about',   :to => 'static_pages#about'
   match 'privacy', :to => 'static_pages#privacy'
   match 'contact', :to => 'static_pages#contact' 
+
+  match 'welcome', :to => 'users#welcome', as: :welcome
 
   devise_for :users
 
