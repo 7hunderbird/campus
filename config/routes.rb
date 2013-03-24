@@ -18,6 +18,8 @@ Campus::Application.routes.draw do
   match 'privacy', :to => 'static_pages#privacy'
   match 'contact', :to => 'static_pages#contact' 
 
+  match 'welcome', :to => 'users#welcome', as: :welcome
+
   devise_for :users
 
   resources :users
