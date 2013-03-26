@@ -1,6 +1,6 @@
 # Campus [![Build Status](https://travis-ci.org/rubycommcollege/campus.png?branch=master)](https://travis-ci.org/rubycommcollege/campus)
 
-TODO: Add project description
+Ruby Community College is where you come to learn to be a better ruby developer.  It unifies all the great ruby training that exists on the web on such websites like Railscasts, Peepcode, Blogs, eBooks, etc into one application to help the developer concetrate on becoming the best developer they can.
 
 Setup
 =====
@@ -39,12 +39,24 @@ For Mac users, it's quickest to use Homebrew and follow the instructions:
 $ brew install elasticsearch
 ```
 
-This would give you a quick install of elasticsearch to the current folder in your linux shell:
+In order to install elasticsearch on ubuntu you need to have Java installed.  This github script automates this process:
+
+https://github.com/flexiondotorg/oab-java6
 
 ```shell
-$ curl -k -L -o elasticsearch-0.20.4.tar.gz http://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-0.20.4.tar.gz
-$ tar -zxvf elasticsearch-0.20.4.tar.gz
-$ ./elasticsearch-0.20.4/bin/elasticsearch -f
+cd ~/
+wget https://github.com/flexiondotorg/oab-java6/raw/0.2.7/oab-java.sh -O oab-java.sh
+chmod +x oab-java.sh
+sudo ./oab-java.sh
+sudo apt-get install sun-java6-jre -y
+```
+
+This downloads the source to he current folder and allows you to run the elasticsearch daemon from this current folder.
+
+```shell
+$ curl -k -L -o elasticsearch-0.20.5.tar.gz http://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-0.20.5.tar.gz
+$ tar -zxvf elasticsearch-0.20.5.tar.gz
+$ ./elasticsearch-0.20.5/bin/elasticsearch -f
 ```
 
 Finally, if the search doesn't seem to return values, you may need to index by running `rake db:seed` to cause the indexes to fire.  If you don't have any courses, enter some or use the Sample Data command below to add some.
@@ -52,7 +64,7 @@ Finally, if the search doesn't seem to return values, you may need to index by r
 Sample Data
 -----------
 
-To run sample data to add courses, just run: bundle exec rake db:load_samples # app rake task to load sample data
+To run sample data to add courses, just run: `bundle exec rake db:load_samples` # app rake task to load sample data
 
 Vagrant
 -------

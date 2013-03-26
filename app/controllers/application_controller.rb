@@ -22,4 +22,9 @@ class ApplicationController < ActionController::Base
     @current_ability ||= Ability.new(current_user)
   end
 
+  # Overriding default devise behavior 
+  def after_sign_in_path_for(resource)
+    welcome_path
+  end
 end
+
