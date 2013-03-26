@@ -1,11 +1,5 @@
 Campus::Application.routes.draw do
 
-  get "homeworks/index"
-
-  get "homeworks/create"
-
-  get "homeworks/destroy"
-
   ActiveAdmin.routes(self)
 
   get "static_pages/home"
