@@ -14,6 +14,8 @@ Campus::Application.routes.draw do
 
   match 'welcome', :to => 'users#welcome', as: :welcome
 
+  # match 'wall', :to => 'users#wall', as: :wall
+
   devise_for :users
 
   resources :users
@@ -23,6 +25,7 @@ Campus::Application.routes.draw do
   end
   
   resources :study_plans
+  # resources :wall
 
   resources :courses do
     resources :materials
@@ -44,6 +47,7 @@ Campus::Application.routes.draw do
 
   resources :users do
     resources :study_plans
+    # resources :wall
   end
 
   root :to => 'static_pages#home'
