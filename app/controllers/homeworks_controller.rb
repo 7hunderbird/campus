@@ -1,16 +1,15 @@
 class HomeworksController < ApplicationController
-  
-  #todo: remove js format since it is not being used
+
   respond_to :html, :js
-  
+
   def index
+    @homeworks = Homework.where(:user_id => current_user.id)
   end
-  
+
+  #ajax request that responds with js.erb file
   def complete
     @homework = Homework.find(params[:id])
-
-    #todo: handle redirect or repsponder if updating attrs is successful and if unsuccessful
-    respond_with @homework
-    #@homework.update_attribute(:completed, true)
+    @homework.update_attribute(:completed, true)
+    #respond_with(@homework)
   end
 end
