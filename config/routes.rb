@@ -14,7 +14,7 @@ Campus::Application.routes.draw do
 
   match 'welcome', :to => 'users#welcome', as: :welcome
 
-  # match 'wall', :to => 'users#wall', as: :wall
+  match 'wall', :to => 'users#wall', as: :wall
 
   devise_for :users
 
@@ -25,6 +25,7 @@ Campus::Application.routes.draw do
   end
   
   resources :study_plans
+
   # resources :wall
 
   resources :courses do

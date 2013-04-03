@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
 
+  def wall
+  end
+
   def welcome
   end
 
