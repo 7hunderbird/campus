@@ -6,11 +6,11 @@ describe HomeworksController do
 
   describe "PUT #complete" do
     before do
-      @homeowrk = create :homework
+      @homework = create :homework
     end
 
     it "assigns @homework" do
-      put :complete, id: @homework
+      xhr :put, :complete, id: @homework
       expect(assigns :homework).to eq @homework
     end
   end
