@@ -1,9 +1,11 @@
 class User < ActiveRecord::Base
   # Model relationships
-  has_many :study_plans
   has_many :courses
   has_many :enrollments, :dependent => :destroy
   has_many :homeworks, :dependent => :destroy
+
+  has_many :study_plans, dependent: :destroy
+  has_many :relationships, foreign_key: "follower_id", dependent: :destroy
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
@@ -22,4 +24,6 @@ class User < ActiveRecord::Base
     joins(:enrollments).where(:enrollments => {:course_id => course.id})
   end
 
+  def feed
+  end
 end
