@@ -5,8 +5,13 @@ class User < ActiveRecord::Base
   has_many :homeworks, :dependent => :destroy
 
   has_many :study_plans, dependent: :destroy
+
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
   has_many :followed_users, through: :relationships, source: :followed
+  has_many :reverse_relationships, foreign_key: "followed_id",
+                                   class_name:  "Relationship",
+                                   dependent:   :destroy
+  has_many :followers, through: :reverse_relationships, source: :follower
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
