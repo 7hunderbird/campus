@@ -18,7 +18,11 @@ Campus::Application.routes.draw do
 
   devise_for :users
 
-  resources :users
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
 
   resources :homeworks do
     put 'complete', :on => :member
