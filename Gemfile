@@ -16,6 +16,7 @@ gem 'cancan'
 
 # Twitter Bootstrap Dependency
 gem 'less-rails', '~> 2.2.6'
+gem 'bootstrap-sass', '2.1'
 
 # Exception notification
 gem 'airbrake'

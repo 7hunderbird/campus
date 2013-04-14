@@ -22,7 +22,7 @@ need to run in another environment, be sure to edit the file and set the values.
 Foreman
 -------
 
-You can use foreman to run all you services for this project while in development. Copy the example
+You can use foreman to run all your services for this project while in development. Copy the example
 Procfile and run.
 
 ```shell

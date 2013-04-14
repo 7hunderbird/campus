@@ -50,6 +50,7 @@ GEM
     arel (3.0.2)
     awesome_print (1.1.0)
     bcrypt-ruby (3.0.1)
+    bootstrap-sass (2.1.0.0)
     bootstrap-will_paginate (0.0.9)
       will_paginate
     bourbon (3.1.1)
@@ -302,6 +303,7 @@ DEPENDENCIES
   activeadmin
   airbrake
   awesome_print
+  bootstrap-sass (= 2.1)
   bootstrap-will_paginate
   cancan
   capistrano
