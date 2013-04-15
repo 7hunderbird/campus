@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
 
   def wall
+    if signed_in?
+      @study_plan  = current_user.study_plans.build
+      @feed_items = current_user.feed.paginate(page: params[:page])
+    end
   end
 
   def welcome

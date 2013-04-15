@@ -1,0 +1,15 @@
+<a href="<%= user_path(current_user) %>">
+ <!-- add code here to display the gravatar for the current_user
+   See the Rails Tutorial, Listing 10.32. The partial for the user info sidebar.
+   app/views/shared/_user_info.html.erb 
+ -->
+</a>
+<h1>
+  <%= current_user.email %>
+</h1>
+<span>
+  <%= link_to "view my profile", current_user %>
+</span>
+<span>
+  <%= pluralize(current_user.study_plans.count, "study_plans") %>
+</span>

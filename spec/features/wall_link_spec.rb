@@ -14,7 +14,7 @@ describe "The link to Wall" do
     it "has a link for Wall" do
       expect( page ).to have_content 'Wall'
       click_on 'Wall'
-      expect( page ).to have_content 'Wall Page'
+      expect( page ).to have_content 'view my profile'
     end
 
     it "view followers"

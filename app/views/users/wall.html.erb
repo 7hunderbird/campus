@@ -1,9 +1,16 @@
-<h1>Wall</h1>
-<p>Hello from the Wall Page at wall.html.erb </p>
+
   <div class="row">
     <aside class="span4">
+      <section>
+        <%= render 'shared/user_info' %>
+      </section>
       <section>
         <%= render 'shared/stats' %>
       </section>
     </aside>
+    <div class="span8">
+      <h3>Study Plan Feed</h3>
+      <p> Figure out how to get the feed working </p>
+      <%#= render 'shared/feed' %>
+    </div>
   </div>

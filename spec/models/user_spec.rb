@@ -15,6 +15,7 @@ describe User do
 
   it { should have_many(:study_plans) }
 
+  it { should respond_to(:study_plans) }
   it { should respond_to(:feed) }
   it { should respond_to(:relationships) }
   it { should respond_to(:followed_users) }
@@ -43,6 +44,27 @@ describe User do
 
       it { should_not be_following(other_user) }
       its(:followed_users) { should_not include(other_user) }
+    end
+  end
+
+  describe "study plans associations" do
+
+    before { @user.save }
+    let!(:older_study_plan) do 
+      FactoryGirl.create(:study_plan, user: @user, created_at: 1.day.ago)
+    end
+    let!(:newer_study_plan) do
+      FactoryGirl.create(:study_plan, user: @user, created_at: 1.hour.ago)
+    end
+
+    describe "status" do
+      let(:unfollowed_post) do
+        FactoryGirl.create(:study_plan, user: FactoryGirl.create(:user))
+      end
+
+      its(:feed) { should include(newer_study_plan) }
+      its(:feed) { should include(older_study_plan) }
+      its(:feed) { should_not include(unfollowed_post) }
     end
   end
 end
