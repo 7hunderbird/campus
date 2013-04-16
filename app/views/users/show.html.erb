@@ -2,6 +2,22 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human %></h1>
 </div>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+        <%#= gravatar_for @user %>
+        <%#= @user.name %>
+      </h1>
+    </section>
+    <section>
+      <%= render 'shared/stats' %>
+    </section>
+  </aside>
+  <div class="span8">
+    <%= render 'follow_form' if signed_in? %>       
+  </div>
+</div> 
 
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:first_name) %>:</strong></dt>
