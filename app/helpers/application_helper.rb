@@ -6,4 +6,8 @@ module ApplicationHelper
     end   
   end
 
+  # Taken from sample_app/app/helpers/sessions_helper.rb
+  def current_user?(user)
+    user == current_user
+  end
 end

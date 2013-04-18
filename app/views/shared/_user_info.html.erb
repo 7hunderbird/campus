@@ -1,8 +1,5 @@
 <a href="<%= user_path(current_user) %>">
- <!-- add code here to display the gravatar for the current_user
-   See the Rails Tutorial, Listing 10.32. The partial for the user info sidebar.
-   app/views/shared/_user_info.html.erb 
- -->
+  <%= gravatar_for current_user, size: 52 %>
 </a>
 <h1>
   <%= current_user.email %>

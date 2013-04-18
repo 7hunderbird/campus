@@ -29,7 +29,7 @@ Campus::Application.routes.draw do
   end
   
   resources :study_plans
-
+  resources :relationships, only: [:create, :destroy]
   # resources :wall
 
   resources :courses do
