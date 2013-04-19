@@ -1,15 +1,11 @@
+<%= content_for :sidebar do %>
+	<%= render 'shared/user_info' %>
 
-  <div class="row">
-    <aside class="span4">
-      <section>
-        <%= render 'shared/user_info' %>
-      </section>
-      <section>
-        <%= render 'shared/stats' %>
-      </section>
-    </aside>
-    <div class="span8">
-      <h3>Study Plan Feed</h3>
-      <%= render 'shared/feed' %>
-    </div>
-  </div>
+	<%= render 'shared/stats' %>
+<% end %>
+
+
+<h3>Study Plan Feed</h3>
+<%= render 'shared/feed' %>
+
+

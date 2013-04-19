@@ -1,10 +1,16 @@
-<li id="<%= feed_item.id %>">
-  <%= link_to gravatar_for(feed_item.user), feed_item.user %>
-  <span class="user">
-    <%= link_to feed_item.user.email, feed_item.user %>
-  </span>
-  <span class="name"><%= feed_item.name %></span>
-  <span class="timestamp">
-    Posted <%= time_ago_in_words(feed_item.created_at) %> ago.
-  </span>
-</li>
+<div class="row-fluid" id="<%= feed_item.id %>" style="padding: 10px; border-bottom: 1px solid #CCCCCC">
+	<div class="span1">
+		<%= link_to gravatar_for(feed_item.user), feed_item.user %>
+	</div>
+	<div class="span5">
+		<div class="row-fluid">
+			<%= link_to feed_item.user.email, feed_item.user %>
+		</div>
+		<div class="row-fluid">
+			Posted <%= time_ago_in_words(feed_item.created_at) %> ago.
+		</div>
+	</div>
+  <div class="timestamp row-fluid">
+    <%= feed_item.name %>
+  </div>
+</div>
