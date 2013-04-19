@@ -6,14 +6,14 @@
 // the place to put css for the wall page.
 // For the wall page:
 
-@import "bootstrap";
+
 
 /* sidebar */
 
 aside {
   section {
     padding: 10px 0;
-    border-top: 1px solid $grayLighter;
+    border-top: 1px solid;
     &:first-child {
       border: 0;
       padding-top: 0;
@@ -44,7 +44,7 @@ aside {
   a {
     float: left;
     padding: 0 10px;
-    border-left: 1px solid $grayLighter;
+    border-left: 1px solid;
     color: gray;
     &:first-child {
       padding-left: 0;
@@ -52,7 +52,7 @@ aside {
     }
     &:hover {
       text-decoration: none;
-      color: $blue;
+      color: blue;
     }
   }
   strong {
