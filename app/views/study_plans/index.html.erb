@@ -1,9 +1,8 @@
 <%- model_class = StudyPlan -%>
 
-<%= form_tag study_plans_path , method: :get do %>
+<%= form_tag study_plans_path , method: :get, remote: true do %>
   <p>
-    <%= text_field_tag :query, params[:query] %>
-    <%= submit_tag "Search", name: nil%>
+    <%= text_field_tag :query, params[:query], :id => 'study-plan-search', :placeholder => 'search study plans' %>
   </p>
 <% end %>
 
