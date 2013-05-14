@@ -152,7 +152,7 @@ changes didn't break any tests. If you do break the build just be sure to fix it
 Debugging
 =========
 
-To help with debugging the Gemfile includes [Pry](http://pryrepl.org/) and [Awesome
+To help with debugging the Gemfile includes [Pry](http://pryrepl.org/) and [Kind of Awesome
 Print](https://github.com/michaeldv/awesome_print).
 
 Email
