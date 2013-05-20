@@ -19,28 +19,41 @@
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
-          <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
           <%= link_to "Campus", static_pages_home_path, :class => "brand" %>
           <div class="container nav-collapse">
-            <ul class="nav">
               <% if user_signed_in? %>
-              <li><%= link_to "Courses", courses_path %></li>
-              <li><%= link_to "Enrollments", enrollments_path %></li>
-              <li><%= link_to "Study Plans", study_plans_path %></li>
-              <li><%= link_to "Wall", wall_path  %></li>
-              <li><%= my_study_plans %></li>
-              <li><%= link_to 'Edit profile', edit_user_registration_path, :style => 'color: blue' %></li>
-              <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :style => 'color: red' %></li>
+              <div class="btn-group"><%= link_to "Courses",
+                                                 courses_path,
+                                                 :class => 'btn dropdown-toggle' %></div>
+              <div class="btn-group"><%= link_to "Enrollments",
+                                                 enrollments_path,
+                                                 :class => 'btn dropdown-toggle' %></div>
+              <div class="btn-group"><%= link_to "Study Plans",
+                                                 study_plans_path,
+                                                 :class => 'btn dropdown-toggle' %></div>
+              <div class="btn-group"><%= link_to "Wall",
+                                                 wall_path,
+                                                 :class => 'btn dropdown-toggle' %></div>
+              <div class="btn-group"><%= link_to "My Study Plans",
+                                                 my_study_plans,
+                                                 :class => 'btn dropdown-toggle' %></div>
+              <div class="btn-group"><%= link_to 'Edit profile', 
+                                                 edit_user_registration_path, 
+                                                 :class => 'btn dropdown-toggle', 
+                                                 :style => 'color: blue' %></div>
+              <div class="btn-group"><%= link_to "Logout", 
+                                                 destroy_user_session_path,
+                                                 method: :delete,
+                                                 :class => 'btn dropdown-toggle',
+                                                 :style => 'color: red' %></div>
               <% if can? :manage, :all %><li><%= link_to "Admin", admin_root_path %></li><% end %>
               <% elsif !user_signed_in? %>
-              <li><%= link_to "Login", new_user_session_path %></li>
+              <div class="btn-group"><%= link_to "Login",
+                                                 new_user_session_path,
+                                                 :class => 'btn dropdown-toggle' %></div>
               <% end %>
             </ul>
-          </div><!--/.nav-collapse -->
+          </div>
         </div>
       </div>
     </div>
