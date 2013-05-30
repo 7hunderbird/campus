@@ -51,6 +51,14 @@ Campus::Application.routes.draw do
     # resources :wall
   end
 
+  resources :items
+
+  resources :libraries
+
+  resources :libraries do
+    resources :items
+  end
+
   root :to => 'static_pages#home'
 
   # web interface for testing email delivery in development
