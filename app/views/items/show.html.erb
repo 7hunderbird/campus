@@ -1,5 +1,30 @@
 <p id="notice"><%= notice %></p>
 
+<p>
+  <b>Title:</b>
+  <%= @item.title %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%= @item.url %>
+</p>
+
+<p>
+  <b>Desc:</b>
+  <%= @item.desc %>
+</p>
+
+<p>
+  <b>Variety:</b>
+  <%= @item.variety %>
+</p>
+
+<p>
+  <b>Library:</b>
+  <%= @item.library_id %>
+</p>
+
 
 <%= link_to 'Edit', edit_library_item_path(@item) %> |
 <%= link_to 'Back', library_items_path %>
