@@ -1,6 +1,6 @@
 <%- model_class = StudyPlan -%>
 
-<%= form_tag study_plans_path , method: :get, remote: true do %>
+<%= form_tag study_plans_path , method: :get do %>
   <p>
     <%= text_field_tag :query, params[:query], :id => 'study-plan-search', :placeholder => 'search study plans' %>
   </p>
@@ -20,24 +20,8 @@
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-  <tbody>
-    <% @study_plans.each do |study_plan| %>
-      <tr>
-        <td><%= link_to study_plan.id, study_plan_path(study_plan) %></td>
-        <td><%= study_plan.name %></td>
-        <td><%= study_plan.due_date %></td>
-        <td><%=l study_plan.created_at %></td>
-        <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_study_plan_path(study_plan), :class => 'btn btn-mini' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      study_plan_path(study_plan),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-mini btn-danger' %>
-        </td>
-      </tr>
-    <% end %>
+  <tbody id="study-plans">
+		<%= render @study_plans %>
   </tbody>
 </table>
 
