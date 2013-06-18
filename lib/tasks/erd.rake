@@ -14,7 +14,7 @@ namespace :campus do
     schema_version = ActiveRecord::Migrator.current_version.to_s
 
     ENV["filename"] = "doc/erd"
-    ENV["title"] = "campus Domain Model (#{schema_version})"
+    ENV["title"] = "Campus Domain Model (#{schema_version})"
     Rake::Task["erd"].invoke
   end
 
