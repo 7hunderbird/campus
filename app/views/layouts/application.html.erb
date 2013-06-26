@@ -39,67 +39,78 @@
             <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
               <span class="icon-bar"></span>
             </button>
-            <a class="brand" href="#">Campus</a>
+            <a class="brand" href="/">Campus</a>
             <div class="nav-collapse in collapse" style="height: auto;">
-              <ul class="nav">
-                <li class="active">
-                  <a href="/">Home</a>
+              <ul class="nav" >
+                <% if user_signed_in? %>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Student <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                  <li>
+                    <a href="#">Search Library</a>
+                  </li>
+                  <li>
+                    <a href="#">Browse Courses</a>
+                  </li>
+                  <li class="divider">
+                  </li>
+                  <li class="nav-header">
+                    My Activities
+                  </li>
+                  <li>
+                    <a href="#">Courses</a>
+                  </li>
+                  <li>
+                    <a href="#">Study Plans</a>
+                  </li>
+                  </ul>
                 </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Teacher <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                  <li>
+                    <a href="#">Add Library Item</a>
+                  </li>
+                  <li>
+                    <a href="#">Build Course</a>
+                  </li>
+                  </ul>
+                </li>
+                <li class="dropdown">
+                  <a href="#" id="profile" class="dropdown-toggle" data-toggle="dropdown">Profile <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                  <li>
+                    <%= link_to 'Edit profile', edit_user_registration_path %>
+                  </li>
+                  <li>
+                    <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+                  </li>
+                  </ul>
+                </li>
+              </ul>
+                <% else %>
                 <li>
                   <a href="#about">About</a>
                 </li>
                 <li>
                   <a href="#contact">Contact</a>
                 </li>
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                  <ul class="dropdown-menu">
-                    <li>
-                      <a href="#">Action</a>
-                    </li>
-                    <li>
-                      <a href="#">Another action</a>
-                    </li>
-                    <li>
-                      <a href="#">Something else here</a>
-                    </li>
-                    <li class="divider">
-                    </li>
-                    <li class="nav-header">
-                      Nav header
-                    </li>
-                    <li>
-                      <a href="#">Separated link</a>
-                    </li>
-                    <li>
-                      <a href="#">One more separated link</a>
-                    </li>
-                  </ul>
-                </li>
               </ul>
-            </div>
-              <div id="signed-in">
-                <% if user_signed_in? %>
-                  Logged in as <strong><%= current_user.email %></strong>.
-                  <%= link_to 'Edit profile', edit_user_registration_path %> |
-                  <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-                <% else %>
-                  <%= form_for (User.new), url: user_session_path(@user), method: :post, html: {class: "navbar-form pull-right"} do |f| %>
-                    <%= f.text_field :email %>
-                    <%= f.password_field :password %>
-                    <%= f.submit "Sign In" %>
-                  <% end %>
-                  <%= link_to "Sign up", new_user_registration_path %>
-                <% end %>
-              </div>
+              <%= form_for (User.new), url: user_session_path(@user), method: :post, html: {class: "navbar-form pull-right"} do |f| %>
+                <%= f.text_field :email %>
+                <%= f.password_field :password %>
+                <%= f.submit "Sign In" %>
+              <% end %>
+
+               <% end %>
           </div>
         </div>
       </div>
     </div>
 
+    <div class="container marketing">
     <%= bootstrap_flash %>
     <%= yield %>
-    <div class="container marketing">
       <footer>
         <p class="pull-right">
           <a href="#">Back to top</a>
@@ -166,6 +177,13 @@
         margin-top: 10px;
       }
       
+      /* */ 
+/*
+      .navbar-form .pull-right {
+        margin: 0px;
+        margin-top: 4px;
+        padding: 0px;
+      } */ 
       
       
       /* CUSTOMIZE THE CAROUSEL
