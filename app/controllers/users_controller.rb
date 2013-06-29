@@ -1,4 +1,11 @@
 class UsersController < ApplicationController
+
+  def wall
+  end
+
+  def welcome
+  end
+
   # GET /users
   # GET /users.json
   def index

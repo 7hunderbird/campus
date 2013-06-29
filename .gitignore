@@ -6,6 +6,7 @@ tmp/
 .sass-cache/
 .project
 config/database.yml
+app/assets/images/.DS_Store
 
 # when the assets are compiled locally, ignore them
 public/assets/

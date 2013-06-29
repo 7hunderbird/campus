@@ -53,6 +53,11 @@ class AssignmentsController < ApplicationController
     @outline.empty? ? i = 1 : i = @outline.sort_by {|x| x.order_number}.last.order_number += 1
     @content = Outline.new(:course_id => @course.id, :content_type => 'Assignment', :order_number => i, :content_id => @assignment.id)
     @content.save
+    @users = User.enrolled(@course)
+    @users.each do |u|
+      @enrollment = Enrollment.where(:user_id => u.id, :course_id => @course.id).first
+      Homework.create(:enrollment_id => @enrollment.id, :assignment_id => @assignment.id, :user_id => u.id)
+    end
     
     respond_to do |format|
       if @assignment.save
@@ -67,15 +72,9 @@ class AssignmentsController < ApplicationController
   # PUT /assignments/1.json
   def update
     @assignment = Assignment.find(params[:id])
-
-    respond_to do |format|
-      if @assignment.update_attributes(params[:assignment])
-        format.html { redirect_to course_path(@course), notice: 'Assignment was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-      end
-    end
+    @assignment.update_attributes(params[:assignment])
+    flash[:notice] = "Assisnment succsessfully updated."
+    redirect_to edit_course_path(@course)
   end
 
   # DELETE /assignments/1

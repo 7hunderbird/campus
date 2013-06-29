@@ -1,50 +1,44 @@
 <%- model_class = Course -%>
 
-<%= form_tag courses_path, method: :get do %>
+<%= form_tag courses_path, method: :get, :remote => true do %>
   <p>
-    <%= text_field_tag :query, params[:query] %>
-    <%= submit_tag "Search", name: nil%>
+    <%= text_field_tag :query, params[:query], :id => 'course-search', :placeholder => 'search courses' %>
   </p>
 <% end %>
 
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+  <h1>RCC Courses</h1>
 </div>
 
-<%= link_to 'New Course',
-        new_course_path,
-        :class => 'btn btn-primary btn-large' %>
+<% if current_user.role == 'admin' || current_user.role == 'faculty' %>
+<%= content_for :sidebar do %>
+	<div class="span3 well">
+		<h4>Courses You Manage</h4>
+		<%= link_to 'New Course', new_course_path, :class => 'btn btn-primary btn-large btn-block' %>
+		<br>
+		<table class="table list">
+		  <tbody>
+		    <% current_user.courses.each do |course| %>
+		      <tr>
+		        <td><%= link_to course.name, course_path(course) %></td>
+		        <td style="text-align: right">
+		          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+		                      edit_course_path(course), :class => 'btn btn-mini' %>
+		          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+		                      course_path(course),
+		                      :method => :delete,
+		                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+		                      :class => 'btn btn-mini btn-danger' %>
+		        </td>
+		      </tr>
+		    <% end %>
+		  </tbody>
+	  </table>
+	</div>
+<% end %>
 
-<br>
-<br>
+<div id="courses">
+ <%= render 'courses' %>
+</div>
 
-<%= will_paginate %>
-
-<table class="table table-striped list">
-  <thead>
-    <tr>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:description) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @courses.each do |course| %>
-      <tr>
-        <td><%= link_to course.name, course_path(course) %></td>
-        <td><%= course.description %></td>
-        <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_course_path(course), :class => 'btn btn-mini' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      course_path(course),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-mini btn-danger' %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<%= will_paginate %>
+<% end %>

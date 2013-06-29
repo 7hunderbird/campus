@@ -1,0 +1,31 @@
+<h1>Listing items</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Url</th>
+    <th>Desc</th>
+    <th>Variety</th>
+    <th>Library</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @items.each do |item| %>
+  <tr>
+    <td><%= item.title %></td>
+    <td><%= item.url %></td>
+    <td><%= item.desc %></td>
+    <td><%= item.variety %></td>
+    <td><%= item.library_id %></td>
+    <td><%= link_to 'Show', library_item_path(@library_id,item) %></td>
+    <td><%= link_to 'Edit', edit_library_item_path(@library_id,item) %></td>
+    <td><%= link_to 'Destroy', library_item_path(@library_id,item), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Item', new_library_item_path %>

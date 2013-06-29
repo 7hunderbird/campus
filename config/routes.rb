@@ -12,16 +12,30 @@ Campus::Application.routes.draw do
   match 'privacy', :to => 'static_pages#privacy'
   match 'contact', :to => 'static_pages#contact' 
 
+  match 'welcome', :to => 'users#welcome', as: :welcome
+
+  match 'wall', :to => 'users#wall', as: :wall
+
   devise_for :users
 
   resources :users
 
+  resources :homeworks do
+    put 'complete', :on => :member
+  end
+  
   resources :study_plans
+
+  # resources :wall
 
   resources :courses do
     resources :materials
     resources :sections
     resources :assignments
+  end
+  
+  resources :enrollments do
+    post 'course', :on => :member
   end
   
   resources :tasks
@@ -34,6 +48,15 @@ Campus::Application.routes.draw do
 
   resources :users do
     resources :study_plans
+    # resources :wall
+  end
+
+  resources :items
+
+  resources :libraries
+
+  resources :libraries do
+    resources :items
   end
 
   root :to => 'static_pages#home'

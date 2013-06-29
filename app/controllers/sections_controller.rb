@@ -33,14 +33,9 @@ class SectionsController < ApplicationController
   
   def update
     @section = Section.find(params[:id])
-
-    respond_to do |format|
-      if @section.update_attributes(params[:section])
-        format.html { redirect_to course_path(@course), notice: 'Section was successfully updated.' }
-      else
-        format.html { render action: "edit" }
-      end
-    end
+    @section.update_attributes(params[:section])
+    flash[:notice] = "Section succsessfully updated."
+    redirect_to edit_course_path(@course)
   end
   
   def destroy

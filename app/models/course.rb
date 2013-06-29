@@ -1,5 +1,5 @@
 class Course < ActiveRecord::Base
-  # Model relationships
+
   belongs_to :user
 
   has_many   :study_plan_courses
@@ -9,6 +9,7 @@ class Course < ActiveRecord::Base
   has_many   :assignments, :dependent => :destroy
   has_many   :sections,    :dependent => :destroy
   has_many   :materials,   :dependent => :destroy
+  has_many   :enrollments, :dependent => :destroy
 
   attr_accessible :description, :name, :url
   
@@ -21,6 +22,10 @@ class Course < ActiveRecord::Base
     tire.search(load:true) do
       query { string params[:query]} if params[:query].present?    
     end
+  end
+  
+  def enrolled(user)
+    Enrollment.where(:user_id => user.id, :course_id => self.id).any?
   end
 
 end

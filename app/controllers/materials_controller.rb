@@ -33,14 +33,9 @@ class MaterialsController < ApplicationController
   
   def update
     @material = Material.find(params[:id])
-
-    respond_to do |format|
-      if @material.update_attributes(params[:material])
-        format.html { redirect_to course_path(@course), notice: 'Material was successfully updated.' }
-      else
-        format.html { render action: "edit" }
-      end
-    end
+    @material.update_attributes(params[:material])
+    flash[:notice] = "Material succsessfully updated."
+    redirect_to edit_course_path(@course)  
   end
   
   def destroy

@@ -1,6 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.2.12'
+gem 'rake', '0.9.2.2'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
@@ -28,6 +29,7 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.6'
   gem 'coffee-rails', '~> 3.2.2'
   gem 'jquery-rails', '~> 2.2.1'
+  gem 'coffee-script-source', '~> 1.4.0' # ADD THIS LINE, 1.5.0 doesn't compile ActiveAdmin JavaScript files
   
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'therubyracer', '~> 0.10.2', :platforms => :ruby
@@ -35,7 +37,7 @@ group :assets do
   # TODO: Why is this 1.0.3 when the latest is 1.3.0?
   gem 'uglifier', '>= 1.0.3'
 
-  gem 'twitter-bootstrap-rails', '~> 2.2.4'
+  gem 'twitter-bootstrap-rails', '2.2.4'
 end
 
 # To use ActiveModel has_secure_password
@@ -46,6 +48,9 @@ gem 'unicorn'
 
 # Deploy with Capistrano
 gem 'capistrano'
+
+# Your the data now dog! Datadog integrations here.
+gem 'dogapi'
 
 # Pagination for easier search
 gem 'will_paginate', '~> 3.0'
@@ -74,6 +79,8 @@ group :development, :test do
   gem 'letter_opener_web', '1.0.0.rc3'
   gem 'foreman'
   gem 'meta_request', '0.2.1'
+  gem 'thin'
+  gem 'rails-erd'
 end
 
 group :production do

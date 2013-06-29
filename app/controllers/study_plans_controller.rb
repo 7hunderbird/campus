@@ -1,5 +1,5 @@
 class StudyPlansController < ApplicationController
-  respond_to :html, :json
+  respond_to :html, :json, :js
 
   before_filter :load_study_plan, except: [:index, :new, :create]
 
