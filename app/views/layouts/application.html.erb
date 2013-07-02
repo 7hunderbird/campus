@@ -97,8 +97,8 @@
                 </li>
               </ul>
               <%= form_for (User.new), url: user_session_path(@user), method: :post, html: {class: "navbar-form pull-right"} do |f| %>
-                <%= f.text_field :email %>
-                <%= f.password_field :password %>
+                <%= f.text_field :email, placeholder: :email %>
+                <%= f.password_field :password, placeholder: :password %>
                 <%= f.submit "Sign In" %>
               <% end %>
 
