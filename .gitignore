@@ -7,6 +7,8 @@ tmp/
 .project
 config/database.yml
 app/assets/images/.DS_Store
+elasticsearch-0.20.5.tar.gz
+elasticsearch-0.20.5/
 
 # when the assets are compiled locally, ignore them
 public/assets/
