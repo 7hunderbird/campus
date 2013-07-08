@@ -1,5 +1,7 @@
 Campus::Application.routes.draw do
 
+  root :to => 'static_pages#home'
+
   ActiveAdmin.routes(self)
 
   get "static_pages/home"
@@ -55,7 +57,14 @@ Campus::Application.routes.draw do
     # resources :wall
   end
 
-  root :to => 'static_pages#home'
+  resources :items
+
+  resources :libraries
+
+  resources :libraries do
+    resources :items
+  end
+
 
   # web interface for testing email delivery in development
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?

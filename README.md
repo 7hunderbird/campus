@@ -64,7 +64,9 @@ Finally, if the search doesn't seem to return values, you may need to index by r
 Sample Data
 -----------
 
-To run sample data to add courses, just run: `bundle exec rake db:load_samples` # app rake task to load sample data
+First run `bundle exec rake db:migrate` to prep the database.
+
+To run sample data to add courses, just run: `bundle exec rake campus:load_samples` # app rake task to load sample data
 
 Vagrant
 -------
@@ -150,7 +152,7 @@ changes didn't break any tests. If you do break the build just be sure to fix it
 Debugging
 =========
 
-To help with debugging the Gemfile includes [Pry](http://pryrepl.org/) and [Awesome
+To help with debugging the Gemfile includes [Pry](http://pryrepl.org/) and [Kind of Awesome
 Print](https://github.com/michaeldv/awesome_print).
 
 Email

@@ -15,9 +15,9 @@ class StudyPlan < ActiveRecord::Base
 
   # Search method for search controller
   def self.search(params)
-    tire.search(load:true) do
-      query { string params[:query]} if params[:query].present?    
+    tire.search do
+      query { string params[:query]} if params[:query].present?
     end
   end
-    
+
 end

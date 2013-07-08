@@ -1,5 +1,5 @@
-namespace :db do
-  desc "Load the sample data from db/sample"
+namespace :campus do
+  desc "[CAMPUS] Load the sample data from db/sample"
   task :load_samples => :environment do
 
     # Add db/sample directory to the load path

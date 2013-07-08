@@ -6,9 +6,9 @@ describe "Study Plan Sign-up" do
 
   before do
     visit new_user_session_path
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
-    click_button "Sign in"
+    fill_in "email", with: user.email
+    fill_in "password", with: user.password
+    click_button "Sign In"
   end
 
   it "signs up for a study plan" do
