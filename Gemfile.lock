@@ -83,6 +83,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.4.0)
+    colorize (0.5.8)
     commonjs (0.2.6)
     daemons (1.1.9)
     devise (2.2.4)
@@ -108,6 +109,8 @@ GEM
       thor (>= 0.13.6)
     formtastic (2.2.1)
       actionpack (>= 3.0)
+    git-smart (0.1.9)
+      colorize
     guard (1.6.2)
       listen (>= 0.6.0)
       lumberjack (>= 1.0.2)
@@ -319,6 +322,7 @@ DEPENDENCIES
   dogapi
   factory_girl_rails (~> 4.1.0)
   foreman
+  git-smart
   guard
   guard-rspec
   jquery-rails (~> 2.2.1)
