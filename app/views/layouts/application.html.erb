@@ -39,7 +39,7 @@
             <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
               <span class="icon-bar"></span>
             </button>
-            <a class="brand" href="/">Campus</a>
+            <% if user_signed_in? %><%= link_to 'Campus', welcome_path, class: "brand"%><% else %><a class="brand" href="/">Campus</a><% end %>
             <div class="nav-collapse in collapse" style="height: auto;">
               <ul class="nav" >
                 <% if user_signed_in? %>
@@ -90,10 +90,13 @@
               </ul>
                 <% else %>
                 <li>
-                  <a href="#about">About</a>
+                  <%= link_to "About", static_pages_about_path %>
                 </li>
                 <li>
-                  <a href="#contact">Contact</a>
+                  <%= link_to "Contact", static_pages_contact_path %>
+                </li>
+                <li>
+                  <a href="http://blog.rubycommunitycollege.com">Blog</a>
                 </li>
               </ul>
               <%= form_for (User.new), url: user_session_path(@user), method: :post, html: {class: "navbar-form pull-right"} do |f| %>
