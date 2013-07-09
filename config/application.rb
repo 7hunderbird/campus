@@ -54,5 +54,8 @@ module Campus
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Don't ask for a production server when compiling assets locally to push
+    config.assets.initialize_on_precompile = false
   end
 end

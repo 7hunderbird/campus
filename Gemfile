@@ -80,6 +80,8 @@ group :development, :test do
   gem 'foreman'
   gem 'meta_request', '0.2.1'
   gem 'thin'
+  gem 'rails-erd'
+  gem 'git-smart'
 end
 
 group :production do
