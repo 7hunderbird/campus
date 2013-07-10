@@ -1,11 +1,5 @@
 <%- model_class = StudyPlan -%>
 
-<%= form_tag study_plans_path , method: :get do %>
-  <p>
-    <%= text_field_tag :query, params[:query], :id => 'study-plan-search', :placeholder => 'search study plans' %>
-  </p>
-<% end %>
-
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
 </div>

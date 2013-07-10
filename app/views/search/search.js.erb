@@ -1,0 +1,3 @@
+$("#results_holder").html("<%= escape_javascript(render 'search') %>")
+$("#search").removeClass("spinner")
+$("#search_results > ul > li.search-item:first").addClass("active")
