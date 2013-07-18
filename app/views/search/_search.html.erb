@@ -1,0 +1,15 @@
+<div id="search_results">
+		<ul>
+			<% if !@courses.blank? %>
+				<li class="search-heading"><h4>Courses</h4></li>
+				<% @courses.each do |course| %>
+					<li class="search-item" data-name="<%= course.name %>" data-url="<%= course_path(course) %>">
+						<%= link_to course.name, course_path(course) %><br>
+						<small><%= course.description.truncate(50) %></small>
+					</li>
+				<% end %>
+			<% else %>
+				<li>No results found.</li>
+			<% end %>
+		</ul>
+</div>

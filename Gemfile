@@ -23,6 +23,9 @@ gem 'airbrake'
 # Let's administrate!
 gem 'activeadmin'
 
+# For search
+gem 'meta_search'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -30,7 +33,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.2'
   gem 'jquery-rails', '~> 2.2.1'
   gem 'coffee-script-source', '~> 1.4.0' # ADD THIS LINE, 1.5.0 doesn't compile ActiveAdmin JavaScript files
-  
+
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'therubyracer', '~> 0.10.2', :platforms => :ruby
 
@@ -57,7 +60,6 @@ gem 'will_paginate', '~> 3.0'
 gem 'bootstrap-will_paginate'
 
 # Search with elasticsearch (backend) and tire (gem)
-gem 'tire'
 
 # To use debugger
 # gem 'ruby-debug'
@@ -81,6 +83,7 @@ group :development, :test do
   gem 'meta_request', '0.2.1'
   gem 'thin'
   gem 'rails-erd'
+  gem 'git-smart'
 end
 
 group :production do

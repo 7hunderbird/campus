@@ -1,11 +1,5 @@
 <%- model_class = Course -%>
 
-<%= form_tag courses_path, method: :get, :remote => true do %>
-  <p>
-    <%= text_field_tag :query, params[:query], :id => 'course-search', :placeholder => 'search courses' %>
-  </p>
-<% end %>
-
 <div class="page-header">
   <h1>RCC Courses</h1>
 </div>

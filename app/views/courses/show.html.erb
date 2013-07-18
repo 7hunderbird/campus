@@ -1,5 +1,5 @@
 <%- model_class = Course -%>
-<div class="page-header row">
+<div class="page-header row-fluid">
 		<h1>Course: <%= @course.name %></h1>
 		<p class="lead"><%= @course.description %></p>
 		<div class="span6">
@@ -13,7 +13,7 @@
 		              :method => 'delete',
 		              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
 		              :class => 'btn btn-danger btn-mini' %>
-	    <% end %>	
+	    <% end %>
     </div>
     <div class="span3">
     	<% if @course.enrolled(current_user) %>
