@@ -6,9 +6,12 @@ tmp/
 .sass-cache/
 .project
 config/database.yml
-app/assets/images/.DS_Store
 elasticsearch-0.20.5.tar.gz
 elasticsearch-0.20.5/
+
+# Oh OSX, Y U .DS_Store All The Time?
+app/assets/images/.DS_Store
+app/assets/.DS_Store
 
 # when the assets are compiled locally, ignore them
 public/assets/
